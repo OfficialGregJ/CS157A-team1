@@ -1,17 +1,16 @@
 
 public class Member {
-	private String uname, password, email, phone;
+	private String uname, password, email;
 
 	public Member() {
 		super();
 	}
 
-	public Member(String uname, String password, String email, String phone) {
+	public Member(String uname, String password, String email) {
 		super();
 		this.uname = uname;
 		this.password = password;
 		this.email = email;
-		this.phone = phone;
 	}
 
 	public String getUname() {
@@ -38,13 +37,6 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 	
 	
 	 
