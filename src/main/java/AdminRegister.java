@@ -39,7 +39,7 @@ public class AdminRegister extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		Admin admin = new Admin(uname, password, email);
-		
+		System.out.println(admin.getEmail());
 		AdminDao aDao = new AdminDao();
 		String result = aDao.insert(admin);
 		response.getWriter().print(result);
