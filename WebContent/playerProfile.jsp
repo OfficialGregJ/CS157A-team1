@@ -1,28 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.Player" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Profile</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0 auto; max-width: 800px; padding: 20px; }
-        h1 { color: #333; }
-        .profile-info { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
-        .profile-info p { margin: 10px 0; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
     <% Player player = (Player) request.getAttribute("player"); %>
-    <h1>Player Profile: <%= player.getName() %></h1>
-    <div class="profile-info">
-        <p><strong>Team:</strong> <%= player.getTeam() %></p>
-        <p><strong>Position:</strong> <%= player.getPosition() %></p>
-        <p><strong>Age:</strong> <%= player.getAge() %></p>
-        <p><strong>Height:</strong> <%= player.getHeight() %></p>
-        <p><strong>Weight:</strong> <%= player.getWeight() %></p>
-        <p><strong>College:</strong> <%= player.getCollege() %></p>
-        <p><strong>Years in NBA:</strong> <%= player.getYearInNBA() %></p>
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-blue-600 text-white p-4">
+                <h1 class="text-3xl font-bold"><%= player.getName() %></h1>
+                <p class="text-xl"><%= player.getTeam() %></p>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <p class="text-gray-600">Position</p>
+                        <p class="text-xl font-semibold"><%= player.getPosition() %></p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-600">Age</p>
+                        <p class="text-xl font-semibold"><%= player.getAge() %></p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-600">Height</p>
+                        <p class="text-xl font-semibold"><%= player.getHeight() %></p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-600">Weight</p>
+                        <p class="text-xl font-semibold"><%= player.getWeight() %></p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-600">College</p>
+                        <p class="text-xl font-semibold"><%= player.getCollege() %></p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-gray-600">Years in NBA</p>
+                        <p class="text-xl font-semibold"><%= player.getYearInNBA() %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -11,7 +11,7 @@ public class PlayerProfile extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String playerName = request.getParameter("name");
-        System.out.print(playerName);
+        
         String playerNameUpdated = playerName.replace('+', ' ');
         
         if (playerNameUpdated != null && !playerNameUpdated.trim().isEmpty()) {
