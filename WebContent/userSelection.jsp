@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Welcome to the Registration Page</h1>
-    <form action="memberRegister.jsp" method="get">
+    <form action="userRegister.jsp" method="get">
         <button type="submit">User Registration</button>
     </form>
     <form action="adminRegister.jsp" method="get">
