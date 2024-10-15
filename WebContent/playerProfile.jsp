@@ -12,9 +12,14 @@
     <% Player player = (Player) request.getAttribute("player"); %>
     <div class="container mx-auto px-4 py-8">
         <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="bg-blue-600 text-white p-4">
-                <h1 class="text-3xl font-bold"><%= player.getName() %></h1>
-                <p class="text-xl"><%= player.getTeam() %></p>
+            <div class="bg-blue-600 text-white p-4 flex items-center">
+                <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/1966.png&w=350&h=254" 
+                     alt="<%= player.getName() %>" 
+                     class="w-24 h-24 rounded-full border-4 border-blue-300 bg-white mr-4 object-cover">
+                <div>
+                    <h1 class="text-3xl font-bold"><%= player.getName() %></h1>
+                    <p class="text-xl"><%= player.getTeam() %></p>
+                </div>
             </div>
             <div class="p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -2,79 +2,38 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.net.URLEncoder"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Player List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            color: #ff8c00; /* Orange color for the header */
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            width: 100%;
-            max-width: 400px;
-        }
-        li {
-            background-color: #fff;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease-in-out;
-        }
-        li:hover {
-            transform: translateY(-2px);
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            display: block;
-            width: 100%;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .error {
-            color: red;
-            text-align: center;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>NBA Player List</h1>
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col items-center p-6">
+    <h1 class="text-4xl font-bold text-orange-500 mb-8 text-center shadow-text">NBA Player List</h1>
     <%
         @SuppressWarnings("unchecked")
         List<String> playerNames = (List<String>) request.getAttribute("playerNames");
         if (playerNames != null && !playerNames.isEmpty()) {
     %>
-        <ul>
+        <ul class="w-full max-w-md space-y-4">
             <% for (String playerName : playerNames) { %>
-                <li>
-                    <a href="playerProfile?name=<%= URLEncoder.encode(playerName, "UTF-8") %>">
+                <li class="bg-white rounded-lg shadow-md transition-transform duration-200 hover:transform hover:-translate-y-1">
+                    <a href="playerProfile?name=<%= URLEncoder.encode(playerName, "UTF-8") %>" 
+                       class="block w-full p-4 text-blue-600 hover:text-blue-800 hover:underline">
                         <%= playerName %>
                     </a>
                 </li>
             <% } %>
         </ul>
     <% } else { %>
-        <p class="error">No players found or the list is empty.</p>
+        <p class="text-red-500 text-center">No players found or the list is empty.</p>
     <% } %>
+
+    <style>
+        .shadow-text {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
 </body>
 </html>
