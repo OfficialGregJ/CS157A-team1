@@ -6,9 +6,9 @@ import java.sql.SQLException;
 // Change dburl once name finalized, change dbpw => .env??
 
 public class RegisterDao {
-	private String dburl="jdbc:mysql://localhost:3306/???";
+	private String dburl="jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname="root";
-	private String dbpassword="";
+	private String dbpassword="password123";
 	private String dbdriver="com.mysql.jdbc.Driver";
 	
 	public void loadDriver(String dbDriver) {
