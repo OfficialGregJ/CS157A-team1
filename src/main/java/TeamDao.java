@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeamDao {
-    private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Change to your database URL
-    private String dbuname = "root";  // Update with your username
-    private String dbpassword = "CS157!";   // Update with your password
-    private String dbdriver = "com.mysql.jdbc.Driver"; // Ensure you have the MySQL driver
+    private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
+    private String dbuname = "root"; // Update with your DB username
+    private String dbpassword = "admin"; // Update with your DB password
+    private String dbdriver = "com.mysql.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
         try {
@@ -29,29 +29,62 @@ public class TeamDao {
         return con;
     }
 
-    public List<Team> getTeams() {
+    // Method to get all team names
+    public List<String> getAllTeamNames() {
         loadDriver(dbdriver);
         Connection con = getConnection();
-        List<Team> teams = new ArrayList<>();
+        List<String> teamNames = new ArrayList<>();
 
-        String query = "SELECT * FROM team";
+        String query = "SELECT Name FROM team"; // Adjust table name if necessary
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Team team = new Team();
-                team.setName(rs.getString("Name"));
-                team.setCity(rs.getString("City"));
-                team.setStadium(rs.getString("Stadium"));
-                teams.add(team);
-                
-                System.out.println("Retrived Team: " + team.getName());
+                String teamName = rs.getString("Name");
+                teamNames.add(teamName);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return teams;
+        return teamNames;
+    }
+    
+    public Team getTeamDetails(String teamName) {
+        loadDriver(dbdriver);
+        Connection con = getConnection();
+        Team team = null;
+
+        String query = "SELECT Name, City, Stadium FROM team WHERE Name = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, teamName);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                team = new Team();
+                team.setName(rs.getString("Name"));
+                team.setCity(rs.getString("City"));
+                team.setStadium(rs.getString("Stadium"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return team;
     }
 }
+
