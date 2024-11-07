@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 
 public class UserDao {
-	private String dburl = "jdbc:mysql://localhost:3306/user";
+	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
 	private String dbpassword = "";
-	private String dbdriver = "com.mysql.jdbc.Driver";
+	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 	
 	public void loadDriver(String dbDriver) {
 		try {
@@ -23,7 +23,7 @@ public class UserDao {
 		try {
 			con = DriverManager.getConnection(dburl,dbuname, dbpassword);
 		} catch (SQLException e) {
-			
+			System.err.println("Failed to establish connection: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return con;
@@ -34,7 +34,7 @@ public class UserDao {
 		Connection con = getConnection();
 		System.out.println("Connection is " + con);
 		String result = "Data entered successfully";
-		String sql = "insert into Kim.member values(?,?,?,?)";
+		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, member.getUname());

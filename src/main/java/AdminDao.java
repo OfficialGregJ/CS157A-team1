@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 
 public class AdminDao {
-	private String dburl = "jdbc:mysql://localhost:3306/admin";
+	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
 	private String dbpassword = "";
 	private String dbdriver = "com.mysql.jdbc.Driver";
@@ -29,17 +29,17 @@ public class AdminDao {
 		return con;
 	}
 	
-	public String insert(Member member) {
+	public String insert(Admin admin) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
 		System.out.println("Connection is " + con);
 		String result = "Data entered successfully";
-		String sql = "inserting values(?,?,?,?)";
+		String sql = "INSERT INTO `deep-drive`.admin (username,password,email) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, member.getUname());
-			ps.setString(2, member.getPassword());
-			ps.setString(3, member.getEmail());
+			ps.setString(1, admin.getUname());
+			ps.setString(2, admin.getPassword());
+			ps.setString(3, admin.getEmail());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			

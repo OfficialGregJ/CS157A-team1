@@ -22,7 +22,6 @@
 				<td><input type="text" name="email"></td>
 			</tr>
 			<tr>
-				<td></td>
 				<td><input type="submit" value="Register"></td>
 			</tr>
 		</table>
