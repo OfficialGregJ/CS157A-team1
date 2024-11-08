@@ -1,15 +1,14 @@
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Connection;
 import java.sql.SQLException;
 
-// Change dburl once name finalized, change dbpw => .env??
 
-public class RegisterDao {
-	private String dburl="jdbc:mysql://localhost:3306/deep-drive";
-	private String dbuname="root";
-	private String dbpassword="password123";
-	private String dbdriver="com.mysql.jdbc.Driver";
+public class UserDao {
+	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
+	private String dbuname = "root";
+	private String dbpassword = "";
+	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 	
 	public void loadDriver(String dbDriver) {
 		try {
@@ -19,12 +18,12 @@ public class RegisterDao {
 			e.printStackTrace();
 		}
 	}
-	
 	public Connection getConnection() {
-		Connection con=null;
+		Connection con = null;
 		try {
-			con = DriverManager.getConnection(dburl, dbuname, dbpassword);
+			con = DriverManager.getConnection(dburl,dbuname, dbpassword);
 		} catch (SQLException e) {
+			System.err.println("Failed to establish connection: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return con;
@@ -33,22 +32,20 @@ public class RegisterDao {
 	public String insert(Member member) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-		String result = "data entered successfully";
-		String sql = "insert into member values(?, ?, ?, ?)";
-		
+		System.out.println("Connection is " + con);
+		String result = "Data entered successfully";
+		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, member.getUname());
 			ps.setString(2, member.getPassword());
 			ps.setString(3, member.getEmail());
-			ps.setString(4, member.getPhone());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
-			result = "data not entered";
+			result = "Data not entered successfully";
 		}
-		
-		return result;	
+		return result;
 	}
 }

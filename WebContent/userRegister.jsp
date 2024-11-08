@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="Register" method="post">
+	<form action="UserRegister" method="post">
 		<table>
 			<tr>
 				<td>User Name</td>
@@ -22,12 +22,7 @@
 				<td><input type="text" name="email"></td>
 			</tr>
 			<tr>
-				<td>Phone</td>
-				<td><input type="text" name="phone"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="register"></td>
+				<td><input type="submit" value="Register"></td>
 			</tr>
 		</table>
 	</form>
