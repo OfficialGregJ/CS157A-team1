@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class TeamStatsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deepdrive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
-    private String dbpassword = "CS157A_F24"; // Update with your DB password
+    private String dbpassword = "5222Genovesio!@"; // Update with your DB password
     private String dbdriver = "com.mysql.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
