@@ -1,15 +1,15 @@
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 
 public class AdminDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-	private String dbpassword = "5222Genovesio!@";
+	private String dbpassword = "";
 	private String dbdriver = "com.mysql.jdbc.Driver";
-	
+
 	public void loadDriver(String dbDriver) {
 		try {
 			Class.forName(dbDriver);
@@ -23,12 +23,12 @@ public class AdminDao {
 		try {
 			con = DriverManager.getConnection(dburl,dbuname, dbpassword);
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return con;
 	}
-	
+
 	public String insert(Admin admin) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
@@ -42,7 +42,7 @@ public class AdminDao {
 			ps.setString(3, admin.getEmail());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			result = "Data not entered successfully";
 		}

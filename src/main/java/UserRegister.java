@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/UserRegister")
 public class UserRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,7 +38,7 @@ public class UserRegister extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		Member member = new Member(uname, password, email);
-		
+
 		UserDao rDao = new UserDao();
 		String result = rDao.insert(member);
 		response.getWriter().print(result);

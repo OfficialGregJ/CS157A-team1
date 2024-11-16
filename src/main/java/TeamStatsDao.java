@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class TeamStatsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deepdrive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
-    private String dbpassword = "5222Genovesio!@"; // Update with your DB password
+    private String dbpassword = ""; // Update with your DB password
     private String dbdriver = "com.mysql.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
@@ -22,14 +22,14 @@ public class TeamStatsDao {
         loadDriver(dbdriver);
         Connection con = null;
         TeamStats stats = null;
-        String sql = "SELECT * FROM team_statistics WHERE Team = ?";
-        
+        String sql = "SELECT * FROM `deep-drive`.team_statistics WHERE Team = ?";
+
         try {
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, team);
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 stats = new TeamStats();
                 stats.setPPG(rs.getDouble("PPG"));
@@ -51,7 +51,9 @@ public class TeamStatsDao {
             e.printStackTrace();
         } finally {
             try {
-                if (con != null) con.close();
+                if (con != null) {
+					con.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }

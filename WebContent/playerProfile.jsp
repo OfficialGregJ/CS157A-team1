@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-    <% Player player = (Player) request.getAttribute("player"); %>
+    <% Player player = (Player) request.getAttribute("player"); %> <!-- Player cannot be resolved to a type -->
     <div class="container mx-auto px-4 py-8">
         <div class="bg-white shadow-lg rounded-lg overflow-hidden">
             <div class="bg-blue-600 text-white p-4 flex items-center">

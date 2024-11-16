@@ -1,10 +1,15 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.Player;
 
 public class PlayerProfileDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-	private String dbpassword = "5222Genovesio!@";
+	private String dbpassword = "";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	public com.Player getPlayerByName(String name) {
@@ -13,7 +18,7 @@ public class PlayerProfileDao {
 			Class.forName(dbdriver);
 			try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
 					PreparedStatement ps = con
-							.prepareStatement("SELECT * FROM player WHERE Name = ?")) {
+							.prepareStatement("SELECT * FROM `deep-drive`.player WHERE Name = ?")) {
 
 				ps.setString(1, name);
 				try (ResultSet rs = ps.executeQuery()) {
