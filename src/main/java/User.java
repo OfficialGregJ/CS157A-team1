@@ -1,12 +1,8 @@
 
-public class Member {
+public class User {
 	private String uname, password, email;
 
-	public Member() {
-		super();
-	}
-
-	public Member(String uname, String password, String email) {
+	public User(String uname, String password, String email) {
 		super();
 		this.uname = uname;
 		this.password = password;
