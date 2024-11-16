@@ -8,7 +8,7 @@ import java.util.List;
 public class TeamDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
-    private String dbpassword = "5222Genovesio!@"; // Update with your DB password
+    private String dbpassword = ""; // Update with your DB password
     private String dbdriver = "com.mysql.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
