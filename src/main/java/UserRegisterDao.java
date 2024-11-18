@@ -5,8 +5,8 @@ import java.sql.SQLException;
 
 // Change dburl once name finalized, change dbpw => .env??
 
-public class RegisterDao {
-	private String dburl="jdbc:mysql://localhost:3306/???";
+public class UserRegisterDao {
+	private String dburl="jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname="root";
 	private String dbpassword="";
 	private String dbdriver="com.mysql.jdbc.Driver";
@@ -30,18 +30,17 @@ public class RegisterDao {
 		return con;
 	}
 	
-	public String insert(Member member) {
+	public String insert(User member) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
 		String result = "data entered successfully";
-		String sql = "insert into member values(?, ?, ?, ?)";
+		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, member.getUname());
 			ps.setString(2, member.getPassword());
 			ps.setString(3, member.getEmail());
-			ps.setString(4, member.getPhone());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
