@@ -7,13 +7,13 @@ public class PlayerProfileDao {
 	private String dbpassword = "password123";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
-	public com.Player getPlayerByName(String name) {
+	public Player getPlayerByName(String name) {
 		Player player = null;
 		try {
 			Class.forName(dbdriver);
 			try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
 					PreparedStatement ps = con
-							.prepareStatement("SELECT * FROM player WHERE Name = ?")) {
+							.prepareStatement("SELECT * FROM `deep-drive`.player WHERE Name = ?")) {
 
 				ps.setString(1, name);
 				try (ResultSet rs = ps.executeQuery()) {
