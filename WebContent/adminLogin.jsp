@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Drive Admin Registration</title>
+    <title>Deep Drive Admin Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -14,8 +14,8 @@
             <i data-lucide="trending-up" class="w-12 h-12 text-orange-600 mr-2"></i>
             <h2 class="text-3xl font-bold text-gray-800">Deep Drive</h2>
         </div>
-        <h3 class="text-xl font-semibold mb-6 text-center text-gray-700">Admin Registration</h3>
-        <form action="AdminRegister" method="post" class="space-y-4">
+        <h3 class="text-xl font-semibold mb-6 text-center text-gray-700">Admin Login</h3>
+        <<form action="AdminLogin" method="post" class="space-y-4">
             <div>
                 <label for="uname" class="block text-sm font-medium text-gray-700">Admin Username</label>
                 <div class="mt-1 relative rounded-md shadow-sm">
@@ -32,15 +32,6 @@
                         <i data-lucide="key" class="h-5 w-5 text-gray-400"></i>
                     </div>
                     <input type="password" id="password" name="password" required class="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
-                </div>
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Admin Email</label>
-                <div class="mt-1 relative rounded-md shadow-sm">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i data-lucide="at-sign" class="h-5 w-5 text-gray-400"></i>
-                    </div>
-                    <input type="text" id="email" name="email" required class="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
                 </div>
             </div>
             <div>

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 public class TeamStatsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TeamStatsDao statsDao = new TeamStatsDao();
         TeamStats stats = statsDao.getTeamStats("Boston Celtics");
-        
+
         if (stats != null) {
             request.setAttribute("ppg", stats.getPPG());
             request.setAttribute("apg", stats.getAPG());

@@ -1,6 +1,4 @@
 package com;
-
-
 public class Player {
     private String name;
     private String team;
@@ -71,5 +69,4 @@ public class Player {
 		this.yearInNBA = yearInNBA;
 	}
 
-    
 }

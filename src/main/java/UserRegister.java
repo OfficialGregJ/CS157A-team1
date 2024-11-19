@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -37,9 +35,9 @@ public class UserRegister extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		Member member = new Member(uname, password, email);
+		User member = new User(uname, password, email);
 		
-		UserDao rDao = new UserDao();
+		UserRegisterDao rDao = new UserRegisterDao();
 		String result = rDao.insert(member);
 		response.getWriter().print(result);
 	}

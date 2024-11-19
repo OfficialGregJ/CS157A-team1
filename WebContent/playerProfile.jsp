@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-    <% Player player = (Player) request.getAttribute("player"); %>
+    <% Player player = (Player) request.getAttribute("player"); %> <!-- Player cannot be resolved to a type -->
     <div class="container mx-auto px-4 py-8">
         <div class="bg-white shadow-lg rounded-lg overflow-hidden">
             <div class="bg-blue-600 text-white p-4 flex items-center">
@@ -48,6 +48,14 @@
                         <p class="text-xl font-semibold"><%= player.getYearInNBA() %></p>
                     </div>
                 </div>
+                <div class="p-6 border-t">
+                <form action="AddToFavorites" method="POST">
+                    <input type="hidden" name="playerName" value="<%= player.getName() %>">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        Add to Favorites
+                    </button>
+                </form>
+            </div>
             </div>
         </div>
     </div>

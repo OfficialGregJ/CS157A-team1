@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AdminRegister")
 public class AdminRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,7 +37,7 @@ public class AdminRegister extends HttpServlet {
 		String email = request.getParameter("email");
 		Admin admin = new Admin(uname, password, email);
 		System.out.println(admin.getEmail());
-		AdminDao aDao = new AdminDao();
+		AdminRegisterDao aDao = new AdminRegisterDao();
 		String result = aDao.insert(admin);
 		response.getWriter().print(result);
 	}
