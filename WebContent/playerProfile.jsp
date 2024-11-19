@@ -48,6 +48,14 @@
                         <p class="text-xl font-semibold"><%= player.getYearInNBA() %></p>
                     </div>
                 </div>
+                <div class="p-6 border-t">
+                <form action="AddToFavorites" method="POST">
+                    <input type="hidden" name="playerName" value="<%= player.getName() %>">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        Add to Favorites
+                    </button>
+                </form>
+            </div>
             </div>
         </div>
     </div>
