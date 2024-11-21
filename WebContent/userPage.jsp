@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="DatabaseConnection" %>
+<%@ page import="com.FavoritePlayerDao" %>
+<%@ page import="java.net.URLEncoder" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,12 +56,15 @@
                     <ul class="space-y-2">
                         <%
                         String username = (String) session.getAttribute("userUsername");
-                        List<String> favoritePlayers = DatabaseConnection.getFavoritePlayers(username);
+                        FavoritePlayerDao favPlayerDao = FavoritePlayerDao.getInstance();
+                        List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
+                        
                         for (String playerName : favoritePlayers) {
+                        String encodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
                         %>
                         <li class="flex items-center">
                             <i data-lucide="user" class="w-5 h-5 mr-2 text-purple-500"></i>
-                            <a href="PlayerProfile?name=<%= playerName %>" class="hover:text-blue-500"><%= playerName %></a>
+                            <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName %></a>
                         </li>
                         <%
                         }

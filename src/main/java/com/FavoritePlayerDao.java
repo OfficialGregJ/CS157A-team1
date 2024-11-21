@@ -1,4 +1,4 @@
-
+package com;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,38 +6,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.Player;
 
 public class FavoritePlayerDao {
-    private final String jdbcUrl;
-    private final String jdbcUser;
-    private final String jdbcPassword;
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/deep-drive";
+    private static final String JDBC_USER = "root";
+    private static final String JDBC_PASSWORD = "5222Genovesio!@";
 
-    public FavoritePlayerDao(String jdbcUrl, String jdbcUser, String jdbcPassword) {
-        this.jdbcUrl = jdbcUrl;
-        this.jdbcUser = jdbcUser;
-        this.jdbcPassword = jdbcPassword;
+    private static FavoritePlayerDao instance;
+
+    private FavoritePlayerDao() {
+        loadDriver("com.mysql.cj.jdbc.Driver");
     }
 
-    public void loadDriver(String dbDriver) {
-		try {
-			Class.forName(dbDriver);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public Connection getConnection() {
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
-		} catch (SQLException e) {
+    public static synchronized FavoritePlayerDao getInstance() {
+        if (instance == null) {
+            instance = new FavoritePlayerDao();
+        }
+        return instance;
+    }
 
-			e.printStackTrace();
-		}
-		return con;
-	}
+    private void loadDriver(String dbDriver) {
+        try {
+            Class.forName(dbDriver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+    }
 
     public List<String> getFavoritePlayers(String username) {
         List<String> favoritePlayers = new ArrayList<>();

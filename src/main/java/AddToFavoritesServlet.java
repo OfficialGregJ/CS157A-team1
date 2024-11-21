@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import com.FavoritePlayerDao;
 @WebServlet("/AddToFavorites")
 public class AddToFavoritesServlet extends HttpServlet {
     private static final long serialVersionUID = -6181776080159454525L;
@@ -20,7 +20,7 @@ public class AddToFavoritesServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         
-        playerDao = new FavoritePlayerDao(dburl, dbuname, dbpassword);
+        playerDao = FavoritePlayerDao.getInstance();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
