@@ -3,11 +3,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TeamStatsDao {
-    private String dburl = "jdbc:mysql://localhost:3306/deepdrive"; // Update with your DB name
+    private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
-    private String dbpassword = ""; // Update with your DB password
+    private String dbpassword = "admin"; // Update with your DB password
     private String dbdriver = "com.mysql.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
@@ -16,6 +18,22 @@ public class TeamStatsDao {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    
+    public List<String> getAllTeams() {
+        loadDriver(dbdriver);
+        List<String> teamNames = new ArrayList<>();
+        String sql = "SELECT Team FROM `deep-drive`.team_statistics";
+        try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                teamNames.add(rs.getString("Team"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return teamNames;
     }
 
     public TeamStats getTeamStats(String team) {
@@ -42,7 +60,6 @@ public class TeamStatsDao {
                 stats.setGamesPlayed(rs.getInt("GamesPlayed"));
                 stats.setWins(rs.getInt("Wins"));
                 stats.setLosses(rs.getInt("Losses"));
-                stats.setWinPercentage(rs.getDouble("Win%"));
             } else {
                 // Handle case when team is not found
                 System.out.println("No stats found for team: " + team);
