@@ -4,19 +4,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-<<<<<<<< HEAD:src/main/java/UserDao.java
+
 public class UserDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
 	private String dbpassword = "";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
-========
-public class UserRegisterDao {
-	private String dburl="jdbc:mysql://localhost:3306/deep-drive";
-	private String dbuname="root";
-	private String dbpassword="";
-	private String dbdriver="com.mysql.jdbc.Driver";
->>>>>>>> TestingLogin:src/main/java/UserRegisterDao.java
+
 	
 	public void loadDriver(String dbDriver) {
 		try {
@@ -40,15 +34,11 @@ public class UserRegisterDao {
 	public String insert(User member) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-<<<<<<<< HEAD:src/main/java/UserDao.java
 		System.out.println("Connection is " + con);
 		String result = "Data entered successfully";
 		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
-========
-		String result = "data entered successfully";
-		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
-		
->>>>>>>> TestingLogin:src/main/java/UserRegisterDao.java
+
+	
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, member.getUname());

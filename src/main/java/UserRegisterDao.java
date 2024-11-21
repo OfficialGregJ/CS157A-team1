@@ -37,8 +37,6 @@ public class UserRegisterDao {
 		System.out.println("Connection is " + con);
 		String result = "Data entered successfully";
 		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
-		String result = "data entered successfully";
-		String sql = "INSERT INTO `deep-drive`.users (Username, Password, Email) VALUES (?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
