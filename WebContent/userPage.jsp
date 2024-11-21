@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="DatabaseConnection" %>
+<%@ page import="com.FavoritePlayerDao" %>
+<%@ page import="java.net.URLEncoder" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +16,11 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="activity" class="w-8 h-8"></i>
-                <span class="text-2xl font-bold">Deep Drive</span>
+                <a href="/DeepDrive/" class="text-2xl font-bold">Deep Drive</a>
             </div>
             <div class="flex items-center space-x-4">
                 <a href="/DeepDrive/userPage.jsp" class="hover:text-blue-200">Dashboard</a>
-                <a href="/DeepDrive/userLogin.jsp" class="hover:text-blue-200">Logout</a>
+                <a href="/DeepDrive/userLogout.jsp" class="hover:text-blue-200">Logout</a>
             </div>
         </div>
     </nav>
@@ -55,12 +56,15 @@
                     <ul class="space-y-2">
                         <%
                         String username = (String) session.getAttribute("userUsername");
-                        List<String> favoritePlayers = DatabaseConnection.getFavoritePlayers(username);
+                        FavoritePlayerDao favPlayerDao = FavoritePlayerDao.getInstance();
+                        List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
+                        
                         for (String playerName : favoritePlayers) {
+                        String encodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
                         %>
                         <li class="flex items-center">
                             <i data-lucide="user" class="w-5 h-5 mr-2 text-purple-500"></i>
-                            <a href="PlayerProfile?name=<%= playerName %>" class="hover:text-blue-500"><%= playerName %></a>
+                            <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName %></a>
                         </li>
                         <%
                         }
