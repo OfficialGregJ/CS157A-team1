@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.Player;
-
-
 @WebServlet("/searchPlayers")
 public class SearchPlayerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -25,6 +23,9 @@ public class SearchPlayerServlet extends HttpServlet {
         List<Player> players = searchPlayerDao.searchPlayers(name, position);
         
         request.setAttribute("players", players);
-        request.getRequestDispatcher("/searchPlayers.jsp").forward(request, response);
+        request.setAttribute("searchName", name);
+        request.setAttribute("searchPosition", position);
+        request.getRequestDispatcher("/playerResults.jsp").forward(request, response);
     }
 }
+
