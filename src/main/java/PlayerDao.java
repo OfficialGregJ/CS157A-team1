@@ -6,7 +6,7 @@ public class PlayerDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
 	private String dbpassword = "password123";
-	private String dbdriver = "com.mysql.jdbc.Driver";
+	private String dbdriver = "com.mysql.cj.jdbc.Driver";
     
     public List<String> getAllPlayerNames() {
         List<String> playerNames = new ArrayList<>();
