@@ -15,7 +15,7 @@ public class UserLogin extends HttpServlet {
     private static final long serialVersionUID = 5044311397524138203L;
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "";
+    private String dbpassword = "admin";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
     public UserLogin() {
@@ -50,7 +50,7 @@ public class UserLogin extends HttpServlet {
         try {
             Class.forName(dbdriver);
             try (Connection conn = DriverManager.getConnection(dburl, dbuname, dbpassword)) {
-                String sql = "SELECT * FROM `deep-drive`.users WHERE username = ? AND password = ?";
+                String sql = "SELECT * FROM `deep-drive`.users WHERE Username = ? AND Password = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                     pstmt.setString(1, username);
                     pstmt.setString(2, password);

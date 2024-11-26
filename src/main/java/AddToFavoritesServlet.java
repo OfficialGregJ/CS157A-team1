@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import com.FavoritePlayerDao;
 @WebServlet("/AddToFavorites")
 public class AddToFavoritesServlet extends HttpServlet {
     private static final long serialVersionUID = -6181776080159454525L;
 	private FavoritePlayerDao playerDao;
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "admin";
     @Override
     public void init() throws ServletException {
         super.init();
         
-        playerDao = new FavoritePlayerDao(dburl, dbuname, dbpassword);
+        playerDao = FavoritePlayerDao.getInstance();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
