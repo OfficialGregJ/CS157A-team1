@@ -69,5 +69,4 @@ public class Player {
 		this.yearInNBA = yearInNBA;
 	}
 
-
 }

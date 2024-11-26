@@ -42,4 +42,3 @@ public class TeamStatsServlet extends HttpServlet {
         request.getRequestDispatcher("teamStats.jsp").forward(request, response);
     }
 }
-

@@ -56,7 +56,6 @@ public class TeamDao {
         }
         return teamNames;
     }
-
     public Team getTeamDetails(String teamName) {
         loadDriver(dbdriver);
         Connection con = getConnection();

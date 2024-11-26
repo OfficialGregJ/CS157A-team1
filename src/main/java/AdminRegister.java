@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AdminRegister")
 public class AdminRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
     /**
      * @see HttpServlet#HttpServlet()
      */
