@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/players")
-public class PlayerList extends HttpServlet {
+public class PlayerListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PlayerDao playerDAO = new PlayerDao();
+        PlayerListDao playerDAO = new PlayerListDao();
         List<String> playerNames = playerDAO.getAllPlayerNames();
 
         request.setAttribute("playerNames", playerNames);

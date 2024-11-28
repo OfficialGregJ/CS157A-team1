@@ -2,10 +2,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerDao {
+public class PlayerListDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-
 	private String dbpassword = "password123";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
