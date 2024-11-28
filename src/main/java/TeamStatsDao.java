@@ -29,7 +29,6 @@ public class TeamStatsDao {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, team);
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 stats = new TeamStats();
                 stats.setPPG(rs.getDouble("PPG"));
