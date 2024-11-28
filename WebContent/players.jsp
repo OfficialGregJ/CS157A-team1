@@ -12,6 +12,12 @@
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col items-center p-6">
     <h1 class="text-4xl font-bold text-orange-500 mb-8 text-center shadow-text">NBA Player List</h1>
     <%
+		if (request.getAttribute("playerNames") == null) {
+			response.sendRedirect("players");
+			return;
+		}
+	%>
+    <%
         @SuppressWarnings("unchecked")
         List<String> playerNames = (List<String>) request.getAttribute("playerNames");
         if (playerNames != null && !playerNames.isEmpty()) {

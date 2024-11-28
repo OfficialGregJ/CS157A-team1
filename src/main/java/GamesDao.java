@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamStatsDao {
+public class GamesDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
     private String dbpassword = "admin"; // Update with your DB password
@@ -20,48 +20,46 @@ public class TeamStatsDao {
         }
     }
     
-    public List<String> getAllTeams() {
+    public List<String> getAllDates() {
         loadDriver(dbdriver);
-        List<String> teamNames = new ArrayList<>();
-        String sql = "SELECT Team FROM `deep-drive`.team_statistics";
+        List<String> dates = new ArrayList<>();
+        String sql = "SELECT DISTINCT Date FROM `deep-drive`.games ORDER BY Date";
         try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                teamNames.add(rs.getString("Team"));
+                dates.add(rs.getString("Date"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return teamNames;
+        return dates;
     }
 
-    public TeamStats getTeamStats(String team) {
+    public Game getAllGameDetails(String date) {
         loadDriver(dbdriver);
         Connection con = null;
-        TeamStats stats = null;
-        String sql = "SELECT * FROM `deep-drive`.team_statistics WHERE Team = ?";
+        Game game = null;
+        String sql = "SELECT * FROM `deep-drive`.games WHERE Date = ?";
 
         try {
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, team);
+            ps.setString(1, date);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                stats = new TeamStats();
-                stats.setPPG(rs.getDouble("PPG"));
-                stats.setAPG(rs.getDouble("APG"));
-                stats.setSPG(rs.getDouble("SPG"));
-                stats.setBPG(rs.getDouble("BPG"));
-                stats.setTOPG(rs.getDouble("TOPG"));
-                stats.setFTPercentage(rs.getDouble("FT%"));
-                stats.setThreePTPercentage(rs.getDouble("3PT%"));
-                stats.setGamesPlayed(rs.getInt("GamesPlayed"));
-                stats.setWins(rs.getInt("Wins"));
-                stats.setLosses(rs.getInt("Losses"));
+            	game = new Game();
+                game.setDate(rs.getString("Date"));
+                game.setTeam1(rs.getString("Team1"));
+                game.setTeam2(rs.getString("Team2"));
+                game.setWinner(rs.getString("Winner"));
+                game.setLoser(rs.getString("Loser"));
+                game.setLocation(rs.getString("Location"));
+
             } else {
                 // Handle case when team is not found
-                System.out.println("No stats found for team: " + team);
+                System.out.println("No stats found for game: " + game);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +72,7 @@ public class TeamStatsDao {
                 e.printStackTrace();
             }
         }
-        return stats;
+        return game;
     }
 
 }

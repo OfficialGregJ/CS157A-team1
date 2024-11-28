@@ -12,13 +12,13 @@
     <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
         <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">NBA Team List</h1>
         <ul class="space-y-2">
-			 <%
+        	<% 
 			    if (request.getAttribute("teamNames") == null) {
 			        response.sendRedirect("TeamServlet");
 			        return;
 			    }
 			%>
-        	
+
             <%
                 List<String> teamNames = (List<String>) request.getAttribute("teamNames");
                 if (teamNames != null && !teamNames.isEmpty()) {
