@@ -5,13 +5,10 @@ import java.util.List;
 public class PlayerDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-<<<<<<< HEAD
+
 	private String dbpassword = "password123";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
-=======
-	private String dbpassword = "";
-	private String dbdriver = "com.mysql.jdbc.Driver";
->>>>>>> main
+
     
     public List<String> getAllPlayerNames() {
         List<String> playerNames = new ArrayList<>();
