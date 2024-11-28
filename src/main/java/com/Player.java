@@ -19,6 +19,9 @@ public class Player {
 		this.college = college;
 		this.yearInNBA = yearInNBA;
 	}
+	public Player() {
+		// TODO Auto-generated constructor stub
+	}
 	private int yearInNBA;
 	public String getName() {
 		return name;
