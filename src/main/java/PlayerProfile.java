@@ -20,6 +20,19 @@ public class PlayerProfile extends HttpServlet {
 
             if (player != null) {
                 request.setAttribute("player", player);
+                
+                PlayerStats stats = dao.getPlayerStatsByName(playerNameUpdated);
+                if (stats != null) {
+                    request.setAttribute("ppg", stats.getPPG());
+                    request.setAttribute("apg", stats.getAPG());
+                    request.setAttribute("bpg", stats.getBPG());
+                    request.setAttribute("spg", stats.getSPG());
+                    request.setAttribute("rpg", stats.getRPG());
+                    request.setAttribute("ft", stats.getFTPercentage());
+                    request.setAttribute("threept", stats.getThreePTPercentage());
+                    request.setAttribute("topg", stats.getTOPG());
+                }
+                
                 request.getRequestDispatcher("/playerProfile.jsp").forward(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Player not found");
