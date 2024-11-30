@@ -12,18 +12,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <nav class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i data-lucide="activity" class="w-8 h-8"></i>
-                <a href="/DeepDrive/" class="text-2xl font-bold">Deep Drive</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="/DeepDrive/userPage.jsp" class="hover:text-blue-200">Dashboard</a>
-                <a href="/DeepDrive/userLogout.jsp" class="hover:text-blue-200">Logout</a>
-            </div>
-        </div>
-    </nav>
+<jsp:include page="header.jsp" />
 
     <main class="container mx-auto mt-8 px-4">
         <h1 class="text-3xl font-bold mb-6">Welcome, <%= session.getAttribute("userUsername") %>!</h1>

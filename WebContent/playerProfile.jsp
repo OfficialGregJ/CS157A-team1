@@ -8,6 +8,9 @@
     <title>Player Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<jsp:include page="header.jsp" />
+
 <body class="bg-gray-100 font-sans">
     <% Player player = (Player) request.getAttribute("player"); %> <!-- Player cannot be resolved to a type -->
     <div class="container mx-auto px-4 py-8">
