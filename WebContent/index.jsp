@@ -40,15 +40,6 @@
                     View Players
                 </a>
             </div>
-
-            <!-- NBA Team Stats -->
-            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Team Stats</h3>
-                <p class="text-gray-600 mb-4">Analyze NBA team performance statistics.</p>
-                <a href="teamStats.jsp" class="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
-                    View Stats
-                </a>
-            </div>
             
             <!-- NBA Team Games -->
             <div class="bg-white p-6 rounded-lg shadow-lg text-center">

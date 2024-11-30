@@ -12,9 +12,10 @@
 <jsp:include page="header.jsp" />
 
 <body class="bg-gray-100 font-sans">
-    <% Player player = (Player) request.getAttribute("player"); %> <!-- Player cannot be resolved to a type -->
+    <% Player player = (Player) request.getAttribute("player"); %>
     <div class="container mx-auto px-4 py-8">
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Player Profile Section -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
             <div class="bg-blue-600 text-white p-4 flex items-center">
                 <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/1966.png&w=350&h=254" 
                      alt="<%= player.getName() %>" 
@@ -52,13 +53,62 @@
                     </div>
                 </div>
                 <div class="p-6 border-t">
-                <form action="AddToFavorites" method="POST">
-                    <input type="hidden" name="playerName" value="<%= player.getName() %>">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                        Add to Favorites
-                    </button>
-                </form>
+                    <form action="AddToFavorites" method="POST">
+                        <input type="hidden" name="playerName" value="<%= player.getName() %>">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                            Add to Favorites
+                        </button>
+                    </form>
+                </div>
             </div>
+        </div>
+
+        <!-- Player Stats Section -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-blue-600 mb-4">Player Statistics</h2>
+                <table class="table-auto w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-blue-600 text-white">
+                            <th class="px-4 py-3 text-left text-sm font-medium">Attribute</th>
+                            <th class="px-4 py-3 text-right text-sm font-medium">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">PPG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("ppg") != null ? request.getAttribute("ppg") : "N/A" %></td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">APG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("apg") != null ? request.getAttribute("apg") : "N/A" %></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">BPG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("bpg") != null ? request.getAttribute("bpg") : "N/A" %></td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">SPG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("spg") != null ? request.getAttribute("spg") : "N/A" %></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">RPG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("rpg") != null ? request.getAttribute("rpg") : "N/A" %></td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">FT%</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("ft") != null ? request.getAttribute("ft") : "N/A" %></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">3PT%</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("threept") != null ? request.getAttribute("threept") : "N/A" %></td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-4 py-3 text-gray-700">TOPG</td>
+                            <td class="px-4 py-3 text-right text-gray-900 font-semibold"><%= request.getAttribute("topg") != null ? request.getAttribute("topg") : "N/A" %></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

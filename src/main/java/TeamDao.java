@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,4 +86,40 @@ public class TeamDao {
         }
         return team;
     }
+    
+    public Team getTeamDetailsWithStats(String teamName) {
+        loadDriver(dbdriver);
+        Connection con = getConnection();
+        Team team = null;
+
+        String query = "SELECT Name, City, Stadium FROM `deep-drive`.team WHERE Name = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, teamName);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                team = new Team();
+                team.setName(rs.getString("Name"));
+                team.setCity(rs.getString("City"));
+                team.setStadium(rs.getString("Stadium"));
+
+                // Fetch statistics for this team
+                TeamStatsDao statsDao = new TeamStatsDao();
+                TeamStats stats = statsDao.getTeamStats(teamName);
+                team.setStats(stats);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return team;
+    }
+
 }
