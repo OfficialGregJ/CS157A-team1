@@ -10,46 +10,7 @@
 </head>
 <body class="bg-gradient-to-br from-blue-500 to-green-500 min-h-screen flex flex-col">
 <!-- Header -->
-<header class="bg-blue-700 text-white py-4">
-    <div class="container mx-auto flex justify-between items-center px-4">
-        <!-- Left Section: Logo -->
-        <div class="flex items-center space-x-2">
-            <i data-lucide="activity" class="w-8 h-8"></i>
-            <a href="/DeepDrive/" class="text-3xl font-bold hover:underline">Deep Drive</a>
-        </div>
-        
-        <!-- Center Section: Buttons -->
-        <div class="flex space-x-4">
-            <a href="displayTeams.jsp" class="hover:underline">Team Info</a>
-            <a href="players.jsp" class="hover:underline">Player Info</a>
-            <a href="games.jsp" class="hover:underline">Game Info</a>
-        </div>
-
-        <!-- Right Section: Navigation -->
-        <nav>
-            <ul class="flex space-x-4">
-                <% 
-                   // Check if the user is logged in by verifying session attributes
-                   String loggedInUser = (String) session.getAttribute("userUsername");
-                   if (loggedInUser != null) { 
-                %>
-                    <!-- Display header for logged-in users -->
-                    <li><a href="userPage.jsp" class="hover:underline">Dashboard</a></li>
-                    <li><a href="userLogout.jsp" class="hover:underline">Logout</a></li>
-                <% 
-                   } else { 
-                %>
-                    <!-- Display header for non-logged-in users -->
-                    <li><a href="userLogin.jsp" class="hover:underline">User Login</a></li>
-                    <li><a href="adminLogin.jsp" class="hover:underline">Admin Login</a></li>
-                    <li><a href="userSelection.jsp" class="hover:underline">Register</a></li>
-                <% 
-                   } 
-                %>
-            </ul>
-        </nav>
-    </div>
-</header>
+<jsp:include page="header.jsp" />
 
 
 
@@ -107,8 +68,5 @@
             <p>&copy; 2024 Deep Drive. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
