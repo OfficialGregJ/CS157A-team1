@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UserDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "password123";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	
