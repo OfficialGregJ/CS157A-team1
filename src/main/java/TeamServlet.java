@@ -19,13 +19,30 @@ public class TeamServlet extends HttpServlet {
         // Check if a team name is passed as a parameter
         String selectedTeam = request.getParameter("team");
         if (selectedTeam != null) {
-            // Fetch the team's details
-            Team team = teamDao.getTeamDetails(selectedTeam);  // Assuming you create this method in TeamDao
+            // Fetch the team's details along with stats
+            Team team = teamDao.getTeamDetailsWithStats(selectedTeam);
             if (team != null) {
                 request.setAttribute("teamName", team.getName());
                 request.setAttribute("city", team.getCity());
                 request.setAttribute("stadium", team.getStadium());
+
+                TeamStats stats = team.getStats();
+                if (stats != null) {
+                    request.setAttribute("ppg", stats.getPPG());
+                    request.setAttribute("apg", stats.getAPG());
+                    request.setAttribute("spg", stats.getSPG());
+                    request.setAttribute("bpg", stats.getBPG());
+                    request.setAttribute("topg", stats.getTOPG());
+                    request.setAttribute("ft", stats.getFTPercentage());
+                    request.setAttribute("threept", stats.getThreePTPercentage());
+                    request.setAttribute("gamesPlayed", stats.getGamesPlayed());
+                    request.setAttribute("wins", stats.getWins());
+                    request.setAttribute("losses", stats.getLosses());
+                }
+            } else {
+                request.setAttribute("errorMessage", "No team details found for: " + selectedTeam);
             }
+
             // Forward to the teamDetails.jsp page
             request.getRequestDispatcher("teamDetails.jsp").forward(request, response);
             return; // Stop further execution
@@ -37,3 +54,4 @@ public class TeamServlet extends HttpServlet {
         request.getRequestDispatcher("displayTeams.jsp").forward(request, response);
     }
 }
+
