@@ -15,7 +15,7 @@ public class UserLogin extends HttpServlet {
     private static final long serialVersionUID = 5044311397524138203L;
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "admin";
+    private String dbpassword = "password123";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
     public UserLogin() {

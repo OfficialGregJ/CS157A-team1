@@ -9,13 +9,23 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-500 to-green-500 min-h-screen flex flex-col">
-    <!-- Header -->
-    <header class="bg-blue-700 text-white py-4">
+<!-- Header -->
+<header class="bg-blue-700 text-white py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
+        <!-- Left Section: Logo -->
         <div class="flex items-center space-x-2">
             <i data-lucide="activity" class="w-8 h-8"></i>
             <a href="/DeepDrive/" class="text-3xl font-bold hover:underline">Deep Drive</a>
         </div>
+        
+        <!-- Center Section: Buttons -->
+        <div class="flex space-x-4">
+            <a href="displayTeams.jsp" class="hover:underline">Team Info</a>
+            <a href="players.jsp" class="hover:underline">Player Info</a>
+            <a href="games.jsp" class="hover:underline">Game Info</a>
+        </div>
+
+        <!-- Right Section: Navigation -->
         <nav>
             <ul class="flex space-x-4">
                 <% 
@@ -40,6 +50,7 @@
         </nav>
     </div>
 </header>
+
 
 
     <!-- Main Content -->
