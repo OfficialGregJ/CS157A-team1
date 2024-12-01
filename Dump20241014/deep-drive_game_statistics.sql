@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+CREATE DATABASE  IF NOT EXISTS `deep-drive` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `deep-drive`;
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
 -- ------------------------------------------------------
@@ -49,7 +51,7 @@ CREATE TABLE `game_statistics` (
 
 LOCK TABLES `game_statistics` WRITE;
 /*!40000 ALTER TABLE `game_statistics` DISABLE KEYS */;
-INSERT INTO `game_statistics` VALUES ('2023-10-24','Golden State Warriors','Phoenix Suns',104,108,49,60,19,23,6,7,0.786,0.765,0.233,0.333,11,19),('2023-10-24','Los Angeles Lakers','Denver Nuggets',107,119,44,42,23,29,4,6,0.75,0.75,0.345,0.412,12,12),('2023-11-02','San Antonio Spurs','Phoenix Suns',132,121,41,34,37,26,5,4,0.923,0.731,0.486,0.5,21,19),('2023-11-02','Toronto Raptors','Philadelphia 76ers',99,114,41,46,30,21,3,3,0.684,0.84,0.684,0.84,19,14),('2023-12-01','Memphis Grizzlies','Dallas Mavericks',108,94,52,42,27,27,12,5,0.818,0.667,0.324,0.308,15,12),('2023-12-01','Washington Wizards','Orlando Magic',125,130,40,44,25,35,5,8,0.71,0.788,0.464,0.387,14,15),('2024-01-08','Chicago Bulls','Charlotte Hornets',119,112,51,44,27,26,7,7,0.833,0.882,0.346,0.405,14,15),('2024-02-12','San Antonio Spurs','Toronto Raptors',122,99,46,47,37,25,13,4,0.826,0.813,0.367,0.258,19,19),('2024-02-13','Boston Celtics','Brooklyn Nets',118,110,39,37,31,28,1,3,0.739,0.654,0.405,0.455,14,12),('2024-10-02','Brooklyn Nets','New Orleans Pelicans',85,112,43,53,26,23,7,10,0.5,0.778,0.256,0.41,15,17);
+INSERT INTO `game_statistics` VALUES ('2023-10-24','Golden State Warriors','Phoenix Suns',104,108,49,60,19,23,6,7,0.786,0.765,0.233,0.333,11,19),('2023-10-24','Los Angeles Lakers','Denver Nuggets',107,119,44,42,23,29,4,6,0.75,0.75,0.345,0.412,12,12),('2023-11-02','San Antonio Spurs','Phoenix Suns',132,121,41,34,37,26,5,4,0.923,0.731,0.486,0.5,21,19),('2023-11-02','Toronto Raptors','Philadelphia 76ers',99,114,41,46,30,21,3,3,0.684,0.84,0.684,0.84,19,14),('2023-12-01','Memphis Grizzlies','Dallas Mavericks',108,94,52,42,27,27,12,5,0.818,0.667,0.324,0.308,15,12),('2023-12-01','Washington Wizards','Orlando Magic',125,130,40,44,25,35,5,8,0.71,0.788,0.464,0.387,14,15),('2024-01-08','Chicago Bulls','Charlotte Hornets',119,112,51,44,27,26,7,7,0.833,0.882,0.346,0.405,14,15),('2024-02-12','San Antonio Spurs','Toronto Raptors',122,99,46,47,37,25,13,4,0.826,0.813,0.367,0.258,19,19),('2024-02-13','Boston Celtics','Brooklyn Nets',118,110,39,37,31,28,1,3,0.739,0.654,0.405,0.455,14,12),('2024-01-02','Brooklyn Nets','New Orleans Pelicans',85,112,43,53,26,23,7,10,0.5,0.778,0.256,0.41,15,17);
 /*!40000 ALTER TABLE `game_statistics` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 11:02:52
+-- Dump completed on 2024-12-01  1:05:49

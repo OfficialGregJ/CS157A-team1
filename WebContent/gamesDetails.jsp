@@ -23,6 +23,21 @@
                 String winner = (String) request.getAttribute("winner");
                 String loser = (String) request.getAttribute("loser");
                 String location = (String) request.getAttribute("location");
+                
+                Integer team1Pts = (Integer) request.getAttribute("team1Pts");
+                Integer team2Pts = (Integer) request.getAttribute("team2Pts");
+                Integer team1Rebounds = (Integer) request.getAttribute("team1Rebounds");
+                Integer team2Rebounds = (Integer) request.getAttribute("team2Rebounds");
+                Integer team1Assists = (Integer) request.getAttribute("team1Assists");
+                Integer team2Assists = (Integer) request.getAttribute("team2Assists");
+                Integer team1Blocks = (Integer) request.getAttribute("team1Blocks");
+                Integer team2Blocks = (Integer) request.getAttribute("team2Blocks");
+                Double team1FT = (Double) request.getAttribute("team1FT");
+                Double team2FT = (Double) request.getAttribute("team2FT");
+                Double team13PT = (Double) request.getAttribute("team13PT");
+                Double team23PT = (Double) request.getAttribute("team23PT");
+                Integer team1TO = (Integer) request.getAttribute("team1TO");
+                Integer team2TO = (Integer) request.getAttribute("team2TO");
 
                 if (date != null && team1 != null && team2 != null) {
             %>
@@ -41,6 +56,34 @@
                     </p>
                     <p class="text-gray-600">
                         <span class="font-medium">Location:</span> <%= location %>
+                    </p>
+                    
+                    <hr class="my-4">
+
+                    <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">NBA Game Statistics</h2>
+                    <p class="text-gray-600">
+                        <span class="font-medium"><%= team1 %> Points:</span> <%= team1Pts %>
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium"><%= team2 %> Points:</span> <%= team2Pts %>
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">Rebounds:</span> <%= team1 %> (<%= team1Rebounds %>) vs <%= team2 %> (<%= team2Rebounds %>)
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">Assists:</span> <%= team1 %> (<%= team1Assists %>) vs <%= team2 %> (<%= team2Assists %>)
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">Blocks:</span> <%= team1 %> (<%= team1Blocks %>) vs <%= team2 %> (<%= team2Blocks %>)
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">Free Throw %:</span> <%= team1 %> (<%= Math.round(team1FT * 100) %>%) vs <%= team2 %> (<%= Math.round(team2FT * 100) %>%)
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">3PT %:</span> <%= team1 %> (<%= Math.round(team13PT * 100) %>%) vs <%= team2 %> (<%= Math.round(team23PT * 100) %>%)
+                    </p>
+                    <p class="text-gray-600">
+                        <span class="font-medium">Turnovers:</span> <%= team1 %> (<%= team1TO %>) vs <%= team2 %> (<%= team2TO %>)
                     </p>
                 </div>
             <%
