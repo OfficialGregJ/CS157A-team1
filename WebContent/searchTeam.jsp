@@ -44,7 +44,7 @@
                     %>
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
                             <td class="py-3 px-6 text-left whitespace-nowrap">
-                                <a href="${pageContext.request.contextPath}/teamProfile?name=<%= java.net.URLEncoder.encode(team.getName(), "UTF-8") %>" class="font-medium text-blue-600 hover:underline"><%= team.getName() %></a>
+								<a href="${pageContext.request.contextPath}/TeamServlet?team=<%= java.net.URLEncoder.encode(team.getName(), "UTF-8") %>" class="font-medium text-blue-600 hover:underline"><%= team.getName() %></a>
                             </td>
                             <td class="py-3 px-6 text-left"><%= team.getCity() %></td>
                             <td class="py-3 px-6 text-left"><%= team.getStadium() %></td>
