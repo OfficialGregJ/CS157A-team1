@@ -49,6 +49,21 @@
                     View Games
                 </a>
             </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Search Teams</h3>
+                <p class="text-gray-600 mb-4">Search for your favorite teams.</p>
+                <a href="searchTeam.jsp" class="inline-block px-6 py-2 bg-orange-600 text-white rounded-md hover:bg-red-700 transition">
+                    Search Teams
+                </a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Search Players</h3>
+                <p class="text-gray-600 mb-4">Search for your favorite players.</p>
+                <a href="searchPlayer.jsp" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-red-700 transition">
+                    Search Players
+                </a>
+            </div>
+            
 
         </section>
     </main>

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Team;
+import com.TeamStats;
+
 @WebServlet("/TeamServlet")
 public class TeamServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
