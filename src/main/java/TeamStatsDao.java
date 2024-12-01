@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.TeamStats;
+
 public class TeamStatsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username

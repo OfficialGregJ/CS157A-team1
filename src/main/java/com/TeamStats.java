@@ -1,3 +1,4 @@
+package com;
 public class TeamStats {
     private double PPG;
     private double APG;
