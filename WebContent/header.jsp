@@ -26,6 +26,7 @@
             <a href="displayTeams.jsp" class="text-lg hover:underline">Team Info</a>
             <a href="players.jsp" class="text-lg hover:underline">Player Info</a>
             <a href="games.jsp" class="text-lg hover:underline">Game Info</a>
+            <a href="searchPlayer.jsp" class="text-lg hover:underline">Search Players</a>
         </div>
 
         <!-- Right Section: Navigation -->

@@ -13,8 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Tomcat9/apache-tomcat-9.0.93/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Tomcat9/apache-tomcat-9.0.93/lib/mysql-connector-j-9.0.0.jar">
+	<classpathentry kind="lib" path="/Users/brandonnguyen/tomcat/apache-tomcat-9.0.93/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/brandonnguyen/tomcat/apache-tomcat-9.0.93/lib/mysql-connector-java.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="https://tomcat.apache.org/tomcat-9.0-doc/api/"/>
 		</attributes>

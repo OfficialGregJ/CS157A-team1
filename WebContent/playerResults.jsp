@@ -9,6 +9,7 @@
     <title>NBA Player Search Results</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<jsp:include page="header.jsp" />
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-6">NBA Player Search Results</h1>
@@ -21,7 +22,7 @@
                 , Position: <span class="font-semibold"><%= request.getAttribute("searchPosition") %></span>
             <% } %>
         </p>
-        <a href="${pageContext.request.contextPath}/searchPlayers.jsp" class="text-blue-500 hover:underline mb-4 inline-block">Back to Search</a>
+        <a href="${pageContext.request.contextPath}/searchPlayer.jsp" class="text-blue-500 hover:underline mb-4 inline-block">Back to Search</a>
         <div class="overflow-x-auto">
             <table class="w-full bg-white shadow-md rounded">
                 <thead>
