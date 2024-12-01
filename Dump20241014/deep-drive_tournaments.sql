@@ -38,7 +38,7 @@ CREATE TABLE `tournaments` (
 
 LOCK TABLES `tournaments` WRITE;
 /*!40000 ALTER TABLE `tournaments` DISABLE KEYS */;
-INSERT INTO `tournaments` VALUES ('Eastern Conference Finals','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse'),('Finals','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden'),('In-Season Tournament','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse'),('In-Season Tournament','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum'),('In-Season Tournament','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center'),('In-Season Tournament','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena'),('In-Season Tournament ','2023-12-09','Los Angeles Lakers','Indiana Pacers','Los Angeles Lakers','T-Mobile Arena'),('Play-In Game','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center'),('Play-In Game','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center'),('Western Conference Finals','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center');
+INSERT INTO `tournaments` VALUES ('Eastern Conference Finals Game 4','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse'),('NBA Finals Game 5','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden'),('In-Season Tournament Group A Stage','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse'),('In-Season Tournament Group B Stage','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum'),('In-Season Tournament West Quarterfinal 1','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center'),('In-Season Tournament West Quarterfinal 2','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena'),('In-Season Tournament Finals','2023-12-09','Indiana Pacers','Los Angeles Lakers','Los Angeles Lakers','T-Mobile Arena'),('Play-In Game 1','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center'),('Play-In Game 2','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center'),('Western Conference Finals Game 5','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center');
 /*!40000 ALTER TABLE `tournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-01  1:55:19
+-- Dump completed on 2024-12-01  4:34:55

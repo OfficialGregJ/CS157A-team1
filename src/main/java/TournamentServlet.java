@@ -28,6 +28,20 @@ public class TournamentServlet extends HttpServlet {
                 request.setAttribute("team2", tournament.getTeam2());
                 request.setAttribute("winner", tournament.getWinner());
                 request.setAttribute("location", tournament.getLocation());
+                request.setAttribute("team1Pts", tournament.getTeam1Pts());
+                request.setAttribute("team2Pts", tournament.getTeam2Pts());
+                request.setAttribute("team1Rebounds", tournament.getTeam1Rebounds());
+                request.setAttribute("team2Rebounds", tournament.getTeam2Rebounds());
+                request.setAttribute("team1Assists", tournament.getTeam1Assists());
+                request.setAttribute("team2Assists", tournament.getTeam2Assists());
+                request.setAttribute("team1Blocks", tournament.getTeam1Blocks());
+                request.setAttribute("team2Blocks", tournament.getTeam2Blocks());
+                request.setAttribute("team1FT", tournament.getTeam1FT());
+                request.setAttribute("team2FT", tournament.getTeam2FT());
+                request.setAttribute("team13PT", tournament.getTeam13PT());
+                request.setAttribute("team23PT", tournament.getTeam23PT());
+                request.setAttribute("team1TO", tournament.getTeam1TO());
+                request.setAttribute("team2TO", tournament.getTeam2TO());
                 request.getRequestDispatcher("tournamentsDetails.jsp").forward(request, response);
                 return;
             } else {

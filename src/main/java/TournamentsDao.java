@@ -43,8 +43,15 @@ public class TournamentsDao {
         loadDriver(dbdriver);
         Connection con = null;
         Tournament tournament = null;
-        String sql = "SELECT TournamentName, Date, Team1, Team2, Winner, Location " +
-                     "FROM `deep-drive`.tournaments WHERE TournamentName = ?";
+        String sql = "SELECT t.TournamentName, t.Date, t.Team1, t.Team2, t.Winner, t.Location, " +
+                "ts.Team1Pts, ts.Team2Pts, ts.Team1Rebounds, ts.Team2Rebounds, " +
+                "ts.Team1Assists, ts.Team2Assists, ts.Team1Blocks, ts.Team2Blocks, " +
+                "ts.`Team1FT%`, ts.`Team2FT%`, ts.`Team13PT%`, ts.`Team23PT%`, " +
+                "ts.Team1TO, ts.Team2TO " +
+                "FROM tournaments t " +
+                "JOIN tournament_stats ts " +
+                "ON t.TournamentName = ts.TournamentName AND t.Date = ts.Date " +
+                "WHERE t.TournamentName = ?";
 
         try {
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
@@ -60,6 +67,20 @@ public class TournamentsDao {
                 tournament.setTeam2(rs.getString("Team2"));
                 tournament.setWinner(rs.getString("Winner"));
                 tournament.setLocation(rs.getString("Location"));
+                tournament.setTeam1Pts(rs.getInt("Team1Pts"));
+                tournament.setTeam2Pts(rs.getInt("Team2Pts"));
+                tournament.setTeam1Rebounds(rs.getInt("Team1Rebounds"));
+                tournament.setTeam2Rebounds(rs.getInt("Team2Rebounds"));
+                tournament.setTeam1Assists(rs.getInt("Team1Assists"));
+                tournament.setTeam2Assists(rs.getInt("Team2Assists"));
+                tournament.setTeam1Blocks(rs.getInt("Team1Blocks"));
+                tournament.setTeam2Blocks(rs.getInt("Team2Blocks"));
+                tournament.setTeam1FT(rs.getDouble("Team1FT%"));
+                tournament.setTeam2FT(rs.getDouble("Team2FT%"));
+                tournament.setTeam13PT(rs.getDouble("Team13PT%"));
+                tournament.setTeam23PT(rs.getDouble("Team23PT%"));
+                tournament.setTeam1TO(rs.getInt("Team1TO"));
+                tournament.setTeam2TO(rs.getInt("Team2TO"));
             } else {
                 System.out.println("No details found for tournament: " + tournamentName);
             }
