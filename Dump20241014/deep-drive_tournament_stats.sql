@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
 -- ------------------------------------------------------
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tournamenet_stats`
+-- Table structure for table `tournament_stats`
 --
 
-DROP TABLE IF EXISTS `tournamenet_stats`;
+DROP TABLE IF EXISTS `tournament_stats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tournamenet_stats` (
+CREATE TABLE `tournament_stats` (
   `TournamentName` varchar(45) NOT NULL,
   `Date` varchar(45) NOT NULL,
   `Team1` varchar(45) DEFAULT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE `tournamenet_stats` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tournamenet_stats`
+-- Dumping data for table `tournament_stats`
 --
 
-LOCK TABLES `tournamenet_stats` WRITE;
-/*!40000 ALTER TABLE `tournamenet_stats` DISABLE KEYS */;
-INSERT INTO `tournamenet_stats` VALUES ('Play-In Tournament','2024-04-16',NULL,NULL,'94','118',42,49,19,28,3,5,0.413,0.439,0.313,0.462,16,8);
-/*!40000 ALTER TABLE `tournamenet_stats` ENABLE KEYS */;
+LOCK TABLES `tournament_stats` WRITE;
+/*!40000 ALTER TABLE `tournament_stats` DISABLE KEYS */;
+INSERT INTO `tournament_stats` VALUES ('Play-In Tournament','2024-04-16',NULL,NULL,'94','118',42,49,19,28,3,5,0.413,0.439,0.313,0.462,16,8);
+/*!40000 ALTER TABLE `tournament_stats` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 11:02:52
+-- Dump completed on 2024-12-01  1:55:19

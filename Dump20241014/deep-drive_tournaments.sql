@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
 -- ------------------------------------------------------
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tournamenets`
+-- Table structure for table `tournaments`
 --
 
-DROP TABLE IF EXISTS `tournamenets`;
+DROP TABLE IF EXISTS `tournaments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tournamenets` (
+CREATE TABLE `tournaments` (
   `TournamentName` varchar(45) NOT NULL,
   `Date` varchar(45) NOT NULL,
   `Team1` varchar(45) NOT NULL,
@@ -33,13 +33,13 @@ CREATE TABLE `tournamenets` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tournamenets`
+-- Dumping data for table `tournaments`
 --
 
-LOCK TABLES `tournamenets` WRITE;
-/*!40000 ALTER TABLE `tournamenets` DISABLE KEYS */;
-INSERT INTO `tournamenets` VALUES ('Eastern Conference Finals','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse'),('Finals','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden'),('In-Season Tournament','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse'),('In-Season Tournament','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum'),('In-Season Tournament','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center'),('In-Season Tournament','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena'),('In-Season Tournament ','2023-12-09','Los Angeles Lakers','Indiana Pacers','Los Angeles Lakers','T-Mobile Arena'),('Play-In Game','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center'),('Play-In Game','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center'),('Western Conference Finals','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center');
-/*!40000 ALTER TABLE `tournamenets` ENABLE KEYS */;
+LOCK TABLES `tournaments` WRITE;
+/*!40000 ALTER TABLE `tournaments` DISABLE KEYS */;
+INSERT INTO `tournaments` VALUES ('Eastern Conference Finals','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse'),('Finals','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden'),('In-Season Tournament','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse'),('In-Season Tournament','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum'),('In-Season Tournament','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center'),('In-Season Tournament','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena'),('In-Season Tournament ','2023-12-09','Los Angeles Lakers','Indiana Pacers','Los Angeles Lakers','T-Mobile Arena'),('Play-In Game','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center'),('Play-In Game','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center'),('Western Conference Finals','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center');
+/*!40000 ALTER TABLE `tournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 11:02:52
+-- Dump completed on 2024-12-01  1:55:19

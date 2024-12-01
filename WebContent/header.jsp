@@ -47,8 +47,10 @@
             <a href="displayTeams.jsp" class="text-lg hover:underline py-2 lg:py-0">Team Info</a>
 	        <a href="players.jsp" class="text-lg hover:underline py-2 lg:py-0">Player Info</a>
 	        <a href="games.jsp" class="text-lg hover:underline py-2 lg:py-0">Game Info</a>
+	        <a href="tournaments.jsp" class="text-lg hover:underline py-2 lg:py-0">Postseason Info</a>
 	        <a href="searchPlayer.jsp" class="text-lg hover:underline py-2 lg:py-0">Search Players</a>
 	        <a href="searchTeam.jsp" class="text-lg hover:underline py-2 lg:py-0">Search Teams</a>
+
 
         <!-- Right Section: Navigation -->
         

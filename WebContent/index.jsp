@@ -64,6 +64,13 @@
                 </a>
             </div>
             
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Postseason</h3>
+                <p class="text-gray-600 mb-4">Explore the NBA postseason.</p>
+                <a href="tournaments.jsp" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition">
+                    View Postseason
+                </a>
+            </div>
 
         </section>
     </main>
