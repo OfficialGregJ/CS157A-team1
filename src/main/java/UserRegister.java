@@ -43,9 +43,13 @@ public class UserRegister extends HttpServlet {
 		if (result.equals("Data entered successfully")) {
 			request.getSession().setAttribute("userUsername", username);
 			response.sendRedirect("userPage.jsp");
-		} else {
-	        // Display error message
-	        request.setAttribute("errorMessage", "Data not eneter successfully");
+		} else if (result.contains("Duplicate entry")) {
+	        // Handle duplicate entry case
+	        request.setAttribute("errorMessage", result);
+	        request.getRequestDispatcher("userRegister.jsp").forward(request, response);
+	    } else {
+	        // Handle general errors
+	        request.setAttribute("errorMessage", "An error occurred. Please try again.");
 	        request.getRequestDispatcher("userRegister.jsp").forward(request, response);
 	    }
 		
