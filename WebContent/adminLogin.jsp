@@ -37,7 +37,7 @@
             <div>
                 <button type="submit" class="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-150 ease-in-out">
                     <i data-lucide="clipboard-check" class="h-5 w-5 mr-2"></i>
-                    Register as Admin
+                    Login as Admin
                 </button>
             </div>
         </form>

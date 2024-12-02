@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class AdminDao {
 	private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "admin";
 	private String dbdriver = "com.mysql.jdbc.Driver";
 	
 	public void loadDriver(String dbDriver) {

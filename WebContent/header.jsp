@@ -35,45 +35,66 @@
             <i data-lucide="activity" class="w-8 h-8"></i>
             <a href="/DeepDrive/" class="text-3xl font-bold hover:underline whitespace-nowrap">Deep Drive</a>
         </div>
-        
+
         <div class="lg:hidden">
             <button id="menu-toggle" class="focus:outline-none">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
         </div>
-        
+
         <!-- Center Section: Buttons -->
         <div id="menu" class="hidden flex-col lg:flex lg:flex-row lg:space-x-6 px-4 py-2 lg:py-0 lg:bg-transparent">
-            <a href="displayTeams.jsp" class="text-lg hover:underline py-2 lg:py-0">Team Info</a>
-	        <a href="players.jsp" class="text-lg hover:underline py-2 lg:py-0">Player Info</a>
-	        <a href="games.jsp" class="text-lg hover:underline py-2 lg:py-0">Game Info</a>
-	        <a href="tournaments.jsp" class="text-lg hover:underline py-2 lg:py-0">Postseason Info</a>
-	        <a href="searchPlayer.jsp" class="text-lg hover:underline py-2 lg:py-0">Search Players</a>
-	        <a href="searchTeam.jsp" class="text-lg hover:underline py-2 lg:py-0">Search Teams</a>
+            <% 
+                // Check if a user or admin is logged in
+                String loggedInUser = (String) session.getAttribute("userUsername");
+                String loggedInAdmin = (String) session.getAttribute("adminUsername");
 
-
-        <!-- Right Section: Navigation -->
-        
-            <ul class="flex flex-col lg:flex-row lg:space-x-6 lg:items-center mt-4 lg:mt-0">
-                <% 
-                   String loggedInUser = (String) session.getAttribute("userUsername");
-                   if (loggedInUser != null) { 
-                %>
-                    <li><a href="userPage.jsp" class="text-lg hover:underline py-2 lg:py-0">Dashboard</a></li>
-                	<li><a href="userLogout.jsp" class="text-lg hover:underline py-2 lg:py-0">Logout</a></li>
-	            <% 
-	               } else { 
-	            %>
-	                <li><a href="userLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">User Login</a></li>
-	                <li><a href="adminLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">Admin Login</a></li>
-	                <li><a href="userSelection.jsp" class="text-lg hover:underline py-2 lg:py-0">User Register</a></li>
-	            <%  
-                   } 
-                %>
-            </ul>
+                if (loggedInAdmin != null) {
+                    // Admin-specific navigation
+            %>
+                <a href="adminPage.jsp" class="text-lg hover:underline py-2 lg:py-0">Admin Dashboard</a>
+                <a href="manageUsers.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Users</a>
+                <a href="manageTournaments.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Tournaments</a>
+                <a href="managePlayers.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Players</a>
+                <a href="userLogout.jsp" class="text-lg hover:underline py-2 lg:py-0">Logout</a>
+            <% 
+                } else if (loggedInUser != null) { 
+                    // User-specific navigation
+            %>
+                <a href="displayTeams.jsp" class="text-lg hover:underline py-2 lg:py-0">Team Info</a>
+                <a href="players.jsp" class="text-lg hover:underline py-2 lg:py-0">Player Info</a>
+                <a href="games.jsp" class="text-lg hover:underline py-2 lg:py-0">Game Info</a>
+                <a href="tournaments.jsp" class="text-lg hover:underline py-2 lg:py-0">Postseason Info</a>
+                <a href="userPage.jsp" class="text-lg hover:underline py-2 lg:py-0">Dashboard</a>
+                <a href="userLogout.jsp" class="text-lg hover:underline py-2 lg:py-0">Logout</a>
+            <% 
+                } else { 
+                    // Default navigation for unauthenticated users
+            %>
+                <a href="userLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">User Login</a>
+                <a href="adminLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">Admin Login</a>
+                <a href="userSelection.jsp" class="text-lg hover:underline py-2 lg:py-0">User Register</a>
+            <% 
+                } 
+            %>
         </div>
     </div>
 </header>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+    });
+</script>
+
 
 
 <script src="https://unpkg.com/lucide@latest"></script>

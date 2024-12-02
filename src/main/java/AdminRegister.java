@@ -32,14 +32,29 @@ public class AdminRegister extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uname = request.getParameter("uname");
+		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		Admin admin = new Admin(uname, password, email);
-		System.out.println(admin.getEmail());
+		
+		Admin admin = new Admin(username, password, email);
+		
+		
 		AdminRegisterDao aDao = new AdminRegisterDao();
 		String result = aDao.insert(admin);
-		response.getWriter().print(result);
+		
+		
+		if (result.equals("Data entered successfully")) {
+			request.getSession().setAttribute("userUsername", username);
+			response.sendRedirect("adminPage.jsp");
+		} else if (result.contains("Duplicate entry")) {
+	        // Handle duplicate entry case
+	        request.setAttribute("errorMessage", result);
+	        request.getRequestDispatcher("adminRegister.jsp").forward(request, response);
+	    } else {
+	        // Handle general errors
+	        request.setAttribute("errorMessage", "An error occurred. Please try again.");
+	        request.getRequestDispatcher("adminRegister.jsp").forward(request, response);
+	    }
 	}
 
 }

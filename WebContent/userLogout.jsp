@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>IUser Logout</title>
+<title>User Logout</title>
 </head>
 <body>
 <% 
