@@ -14,89 +14,112 @@
 <body class="bg-gray-100 min-h-screen">
 <jsp:include page="header.jsp" />
 
-    <main class="container mx-auto mt-8 px-4">
-        <h1 class="text-3xl font-bold mb-6">Welcome, <%= session.getAttribute("userUsername") %>!</h1>
+<main class="container mx-auto mt-8 px-4">
+    <h1 class="text-3xl font-bold mb-6">Welcome, <%= session.getAttribute("userUsername") %>!</h1>
 
-        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-2xl font-semibold mb-4 flex items-center">
-                <i data-lucide="star" class="w-6 h-6 mr-2 text-yellow-500"></i>
-                Favorites
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Teams</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-lucide="shield" class="w-5 h-5 mr-2 text-blue-500"></i>
-                            Los Angeles Lakers
-                        </li>
-                        <li class="flex items-center">
-                            <i data-lucide="shield" class="w-5 h-5 mr-2 text-green-500"></i>
-                            Boston Celtics
-                        </li>
-                        <li class="flex items-center">
-                            <i data-lucide="shield" class="w-5 h-5 mr-2 text-red-500"></i>
-                            Chicago Bulls
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Players</h3>
-                    <ul class="space-y-2">
-                        <%
-                        String username = (String) session.getAttribute("userUsername");
-                        FavoritePlayerDao favPlayerDao = FavoritePlayerDao.getInstance();
-                        List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
-                        
-                     	// Ensure there is only one entry for a user's favorite players
-                        if (!favoritePlayers.isEmpty()) {
-                            // Split the players string into individual names
-                            String[] players = favoritePlayers.get(0).split(", ");
-                            for (String playerName : players) {
-                                String encodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
-                        %>
-                        <li class="flex items-center">
-                            <i data-lucide="user" class="w-5 h-5 mr-2 text-purple-500"></i>
-                            <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName %></a>
-                        </li>
-                        <%
-			            	}
-			        	} else {
-			        	%>
-			        	<li class="text-gray-500 italic">No favorite players added yet.</li>
-			        	<%
-			        	}
-			        	%>
-                    </ul>
-                </div>
+    <!-- Favorites Section -->
+    <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+            <i data-lucide="star" class="w-6 h-6 mr-2 text-yellow-500"></i>
+            Favorites
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Teams</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-blue-500"></i>
+                        Los Angeles Lakers
+                    </li>
+                    <li class="flex items-center">
+                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-green-500"></i>
+                        Boston Celtics
+                    </li>
+                    <li class="flex items-center">
+                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-red-500"></i>
+                        Chicago Bulls
+                    </li>
+                </ul>
             </div>
-        </section>
-
-        <section class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-semibold mb-4 flex items-center">
-                <i data-lucide="trending-up" class="w-6 h-6 mr-2 text-green-500"></i>
-                Recent Analytics
-            </h2>
-            <p class="text-gray-600 mb-4">Here's a quick overview of your recent analytics:</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-blue-100 p-4 rounded-lg">
-                    <h3 class="font-semibold mb-2">Points per Game</h3>
-                    <p class="text-2xl font-bold">24.7</p>
-                </div>
-                <div class="bg-green-100 p-4 rounded-lg">
-                    <h3 class="font-semibold mb-2">Assists per Game</h3>
-                    <p class="text-2xl font-bold">7.2</p>
-                </div>
-                <div class="bg-yellow-100 p-4 rounded-lg">
-                    <h3 class="font-semibold mb-2">Rebounds per Game</h3>
-                    <p class="text-2xl font-bold">10.1</p>
-                </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Players</h3>
+                <ul class="space-y-2">
+                    <%
+                    String username = (String) session.getAttribute("userUsername");
+                    String password = (String) session.getAttribute("userPassword");
+                    FavoritePlayerDao favPlayerDao = FavoritePlayerDao.getInstance();
+                    List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
+                    
+                 	// Ensure there is only one entry for a user's favorite players
+                    if (!favoritePlayers.isEmpty()) {
+                        // Split the players string into individual names
+                        String[] players = favoritePlayers.get(0).split(", ");
+                        for (String playerName : players) {
+                            String encodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
+                    %>
+                    <li class="flex items-center">
+                        <i data-lucide="user" class="w-5 h-5 mr-2 text-purple-500"></i>
+                        <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName %></a>
+                    </li>
+                    <%
+		            	}
+		        	} else {
+		        	%>
+		        	<li class="text-gray-500 italic">No favorite players added yet.</li>
+		        	<%
+		        	}
+		        	%>
+                </ul>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <!-- Settings Section -->
+    <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i data-lucide="settings" class="w-6 h-6 mr-2 text-blue-500"></i>
+        Settings
+    </h2>
+    <form action="${pageContext.request.contextPath}/UpdateSettingsServlet" method="post" class="space-y-4">
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                value="<%= session.getAttribute("userUsername") %>" 
+                class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <button 
+                type="submit" 
+                name="updateType" 
+                value="username" 
+                class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                Update
+            </button>
+        </div>
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                value="<%= session.getAttribute("userPassword") != null ? session.getAttribute("userPassword") : "" %>" 
+                class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+            <button 
+                type="submit" 
+                name="updateType" 
+                value="password" 
+                class="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                Update
+            </button>
+        </div>
+    </form>
+</section>
+
+</main>
+
+<script>
+    lucide.createIcons();
+</script>
 </body>
 </html>

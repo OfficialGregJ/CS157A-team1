@@ -42,6 +42,7 @@ public class UserRegister extends HttpServlet {
 		
 		if (result.equals("Data entered successfully")) {
 			request.getSession().setAttribute("userUsername", username);
+			request.getSession().setAttribute("userPassword", password);
 			response.sendRedirect("userPage.jsp");
 		} else if (result.contains("Duplicate entry")) {
 	        // Handle duplicate entry case
