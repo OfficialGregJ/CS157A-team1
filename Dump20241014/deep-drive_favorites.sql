@@ -35,7 +35,7 @@ CREATE TABLE `favorites` (
 
 LOCK TABLES `favorites` WRITE;
 /*!40000 ALTER TABLE `favorites` DISABLE KEYS */;
-INSERT INTO `favorites` VALUES ('A','Golden State Warriors','Stephen Curry, Luka Doncic'),('B','Los Angeles Lakers','Lebron James'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics, Dallas Mavericks','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','Dallas Mavericks, Sacramento Kings','Luka Doncic'),('G','Brooklyn Nets','Ben Simmons'),('H','New York Knicks, Philadelphia 76ers','Jalen Brunson'),('I','Minnesota Timberwolves','Anthony Edwards'),('J','Los Angeles Clippers, Toronto Raptors','Paul George');
+INSERT INTO `favorites` VALUES ('B','Los Angeles Lakers','Lebron James'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','','Luka Doncic'),('G','','Ben Simmons'),('H','','Jalen Brunson'),('I','','Anthony Edwards'),('J','','Paul George'),('A','Golden State Warriors','Stephen Curry, Kyrie Irving');
 /*!40000 ALTER TABLE `favorites` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-02  0:36:44
+-- Dump completed on 2024-12-02  4:56:10

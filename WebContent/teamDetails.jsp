@@ -10,9 +10,7 @@
 
 <!-- Include the header -->
 <jsp:include page="header.jsp" />
-
 <body class="bg-gray-100 min-h-screen">
-    <!-- Main Content -->
     <div class="flex items-center justify-center min-h-[calc(100vh-64px)] p-6">
         <!-- Parent Flex Container -->
         <div class="flex flex-col lg:flex-row gap-8 w-full max-w-6xl items-start">
@@ -35,6 +33,15 @@
                             <span class="font-medium">Stadium:</span> <%= stadium %>
                         </p>
                     </div>
+                    <div class="p-6 border-t">
+	                    <form action="AddToTeamFavorites" method="POST">
+						    <input type="hidden" name="teamNames" value="<%= teamName %>">
+						    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+						        Add to Favorites
+						    </button>
+						</form>
+
+                </div>
                 <%
                     } else {
                 %>
