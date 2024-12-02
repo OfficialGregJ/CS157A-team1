@@ -43,7 +43,7 @@
             
             <!-- NBA Team Games -->
             <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Team Games</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Games</h3>
                 <p class="text-gray-600 mb-4">Browse NBA game schedules and results.</p>
                 <a href="games.jsp" class="inline-block px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
                     View Games

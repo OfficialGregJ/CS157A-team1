@@ -44,7 +44,7 @@ public class AdminRegister extends HttpServlet {
 		
 		
 		if (result.equals("Data entered successfully")) {
-			request.getSession().setAttribute("userUsername", username);
+			request.getSession().setAttribute("adminUsername", username);
 			response.sendRedirect("adminPage.jsp");
 		} else if (result.contains("Duplicate entry")) {
 	        // Handle duplicate entry case
