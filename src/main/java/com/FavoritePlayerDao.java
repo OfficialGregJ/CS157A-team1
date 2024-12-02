@@ -58,12 +58,30 @@ public class FavoritePlayerDao {
     }
 
     public void addFavoritePlayer(String username, String playerName) throws SQLException {
-        String query = "INSERT INTO `deep-drive`.favorites (User, Players) VALUES (?, ?)";
+    	String selectQuery = "SELECT Players FROM `deep-drive`.favorites WHERE User = ?";
+        String updateQuery = "UPDATE `deep-drive`.favorites SET Players = CONCAT(Players, ', ', ?) WHERE User = ?";
+        String insertQuery = "INSERT INTO `deep-drive`.favorites (User, Players) VALUES (?, ?)";
         try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, username);
-            pstmt.setString(2, playerName);
-            pstmt.executeUpdate();
+             PreparedStatement selectStmt = conn.prepareStatement(selectQuery)) {
+        	// Check if users already has favorites
+        	selectStmt.setString(1, username);
+        	try (ResultSet rs = selectStmt.executeQuery()) {
+        		if (rs.next()) {
+        			// User exists, update their favorites
+        			try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+        				updateStmt.setString(1, playerName);
+        				updateStmt.setString(2, username);
+        				updateStmt.executeUpdate();
+        			}
+        		} else {
+        			// User doesn't exist, insert new row
+        			 try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+                         insertStmt.setString(1, username);
+                         insertStmt.setString(2, playerName);
+                         insertStmt.executeUpdate();
+                     } 
+        		}
+        	}
         }
     }
 
