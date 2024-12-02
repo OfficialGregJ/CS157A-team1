@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.Player;
 import com.Team;
@@ -88,6 +89,12 @@ public class FavoriteDao {
         	selectStmt.setString(1, username);
         	try (ResultSet rs = selectStmt.executeQuery()) {
         		if (rs.next()) {
+        			// Check for duplicates
+        			String currentPlayers = rs.getString("Players");
+        			if (currentPlayers != null && Arrays.asList(currentPlayers.split(", ")).contains(playerName)) {
+        				System.out.println("Player already exists in favorites: " + playerName);
+        				return;
+        			}
         			// User exists, update their favorites
         			try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
         				updateStmt.setString(1, playerName);
@@ -117,6 +124,12 @@ public class FavoriteDao {
 
             try (ResultSet rs = selectStmt.executeQuery()) {
                 if (rs.next()) {
+                	// Check for duplicates
+                	String currentTeams = rs.getString("Teams");
+        			if (currentTeams != null && Arrays.asList(currentTeams.split(", ")).contains(teamName)) {
+        				System.out.println("Player already exists in favorites: " + teamName);
+        				return;
+        			}
                     // User exists, update their favorites
                     try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
                         updateStmt.setString(1, teamName);

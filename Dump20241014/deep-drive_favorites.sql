@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `favorites`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `favorites` (
   `User` varchar(45) NOT NULL,
-  `Teams` varchar(45) DEFAULT NULL,
-  `Players` varchar(45) DEFAULT NULL
+  `Teams` varchar(500) DEFAULT NULL,
+  `Players` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,7 +35,7 @@ CREATE TABLE `favorites` (
 
 LOCK TABLES `favorites` WRITE;
 /*!40000 ALTER TABLE `favorites` DISABLE KEYS */;
-INSERT INTO `favorites` VALUES ('B','Los Angeles Lakers','Lebron James'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','','Luka Doncic'),('G','','Ben Simmons'),('H','','Jalen Brunson'),('I','','Anthony Edwards'),('J','','Paul George'),('A','Golden State Warriors','Stephen Curry, Kyrie Irving');
+INSERT INTO `favorites` VALUES ('B','Los Angeles Lakers','Lebron James'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','','Luka Doncic'),('G','','Ben Simmons'),('H','','Jalen Brunson'),('I','','Anthony Edwards'),('J','','Paul George'),('A','Golden State Warriors, Dallas Mavericks','Stephen Curry, Kyrie Irving');
 /*!40000 ALTER TABLE `favorites` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-02  4:56:10
+-- Dump completed on 2024-12-02  5:09:51
