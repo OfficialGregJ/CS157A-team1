@@ -47,6 +47,10 @@
                     <h3 class="font-semibold mb-2">Player Management</h3>
                     <p>Add, edit, or delete player details.</p>
                 </a>
+                <a href="managePlayers.jsp" class="block bg-red-100 p-4 rounded-lg shadow-md hover:bg-purple-200">
+                    <h3 class="font-semibold mb-2">Game Management</h3>
+                    <p>Add, edit, or delete game details.</p>
+                </a>
             </div>
         </section>
 
@@ -56,7 +60,7 @@
 	            <i data-lucide="activity" class="w-6 h-6 mr-2 text-green-500"></i>
 	            System Overview
 	        </h2>
-	        <p class="text-gray-600 mb-4">Here's a quick summary of the system:</p>
+	        <p class="text-gray-600 mb-4">Here's a quick summary of Deep Drive:</p>
 	        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 	            <div class="bg-blue-100 p-4 rounded-lg">
 	                <h3 class="font-semibold mb-2">Total Users</h3>
