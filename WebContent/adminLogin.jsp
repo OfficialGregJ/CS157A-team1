@@ -15,7 +15,7 @@
             <h2 class="text-3xl font-bold text-gray-800">Deep Drive</h2>
         </div>
         <h3 class="text-xl font-semibold mb-6 text-center text-gray-700">Admin Login</h3>
-        <<form action="AdminLogin" method="post" class="space-y-4">
+        <form action="AdminLogin" method="post" class="space-y-4">
             <div>
                 <label for="uname" class="block text-sm font-medium text-gray-700">Admin Username</label>
                 <div class="mt-1 relative rounded-md shadow-sm">

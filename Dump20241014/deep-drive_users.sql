@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+CREATE DATABASE  IF NOT EXISTS `deep-drive` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `deep-drive`;
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
 -- ------------------------------------------------------
@@ -24,7 +26,8 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `Username` varchar(45) NOT NULL,
-  `Password` varchar(45) NOT NULL
+  `Password` varchar(45) NOT NULL,
+  `Email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -34,7 +37,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('A','Test1'),('B','Test2'),('C','Test3'),('D','Test4'),('E','Test5'),('F','Test6'),('G','Test7'),('H','Test8'),('I','Test9'),('J','Test10');
+INSERT INTO `users` VALUES ('A','Test1','A@example.com'),('B','Test2','B@example.com'),('C','Test3','C@example.com'),('D','Test4','D@example.com'),('E','Test5','E@example.com'),('F','Test6','F@example.com'),('G','Test7','G@example.com'),('H','Test8','H@example.com'),('I','Test9','I@example.com'),('J','Test10','J@example.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 11:02:53
+-- Dump completed on 2024-12-01 22:39:09

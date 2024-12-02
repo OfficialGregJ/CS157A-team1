@@ -66,7 +66,7 @@
 	            %>
 	                <li><a href="userLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">User Login</a></li>
 	                <li><a href="adminLogin.jsp" class="text-lg hover:underline py-2 lg:py-0">Admin Login</a></li>
-	                <li><a href="userSelection.jsp" class="text-lg hover:underline py-2 lg:py-0">Register</a></li>
+	                <li><a href="userSelection.jsp" class="text-lg hover:underline py-2 lg:py-0">User Register</a></li>
 	            <%  
                    } 
                 %>

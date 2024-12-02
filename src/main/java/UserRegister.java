@@ -32,14 +32,23 @@ public class UserRegister extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uname = request.getParameter("uname");
+		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		User member = new User(uname, password, email);
+		User member = new User(username, password, email);
 		
 		UserRegisterDao rDao = new UserRegisterDao();
 		String result = rDao.insert(member);
-		response.getWriter().print(result);
+		
+		if (result.equals("Data entered successfully")) {
+			request.getSession().setAttribute("userUsername", username);
+			response.sendRedirect("userPage.jsp");
+		} else {
+	        // Display error message
+	        request.setAttribute("errorMessage", "Data not eneter successfully");
+	        request.getRequestDispatcher("userRegister.jsp").forward(request, response);
+	    }
+		
 	}
 
 }
