@@ -32,23 +32,31 @@
                     FavoriteDao favDao = FavoriteDao.getInstance();
                     List<String> favoriteTeams = favDao.getFavoriteTeams(username);
                     
-                    if (favoriteTeams != null && !favoriteTeams.isEmpty() && !favoriteTeams.get(0).isEmpty()) {
+                    if (favoriteTeams != null && !favoriteTeams.isEmpty() && favoriteTeams.get(0) != null && !favoriteTeams.get(0).isEmpty()) {
                         // Split the teams string into individual names
                         String[] teams = favoriteTeams.get(0).split(", ");
                         for (String teamName : teams) {
-                            String encodedTeamName = URLEncoder.encode(teamName, "UTF-8");
+                            	String encodedTeamName = URLEncoder.encode(teamName.trim(), "UTF-8");
                     %>
-                    <li class="flex items-center">
-                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-blue-500"></i>
-                        <a href="${pageContext.request.contextPath}/TeamServlet?team=<%= encodedTeamName %>" class="hover:text-blue-500"><%= teamName %></a>
-                    </li>
+		                    <li class="flex items-center">
+		                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-blue-500"></i>
+		                        <a href="${pageContext.request.contextPath}/TeamServlet?team=<%= encodedTeamName %>" class="hover:text-blue-500"><%= teamName.trim() %></a>
+		                        <form action="FavoritesServlet" method="POST" class="mx-3">
+		                            <input type="hidden" name="action" value="removeTeam">
+		                            <input type="hidden" name="teamName" value="<%= teamName.trim() %>">
+		                            <button type="submit" class="text-red-500 hover:underline">Remove</button>
+		                        </form>
+		                    </li>
+                    
                     <%
-                        }
+                       
+                       }
                     } else {
                     %>
                     <li class="text-gray-500 italic">No favorite teams added yet.</li>
                     <%
                     }
+                    
                     %>
                 </ul>
             </div>
@@ -63,15 +71,20 @@
                     List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
                     
                  	// Ensure there is only one entry for a user's favorite players
-                    if (!favoritePlayers.isEmpty()) {
+                    if (favoritePlayers != null && !favoritePlayers.isEmpty() && favoritePlayers.get(0) != null && !favoritePlayers.get(0).isEmpty()) {
                         // Split the players string into individual names
                         String[] players = favoritePlayers.get(0).split(", ");
                         for (String playerName : players) {
-                            String encodedPlayerName = URLEncoder.encode(playerName, "UTF-8");
+                            String encodedPlayerName = URLEncoder.encode(playerName.trim(), "UTF-8");
                     %>
                     <li class="flex items-center">
                         <i data-lucide="user" class="w-5 h-5 mr-2 text-purple-500"></i>
-                        <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName %></a>
+                        <a href="${pageContext.request.contextPath}/playerProfile?name=<%= encodedPlayerName %>" class="hover:text-blue-500"><%= playerName.trim() %></a>
+                         <form action="FavoritesServlet" method="POST" class="mx-3">
+                            <input type="hidden" name="action" value="removePlayer">
+                            <input type="hidden" name="playerName" value="<%= playerName %>">
+                            <button type="submit" class="text-red-500 hover:underline">Remove</button>
+                        </form>
                     </li>
                     <%
 		            	}
