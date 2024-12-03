@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GamesDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
@@ -71,6 +73,49 @@ public class GamesDao {
         }
         return games;
     }
+    
+    public List<Map<String, Object>> getPlayerStatsByTeamAndDate(String date, String team) {
+        loadDriver(dbdriver);
+        Connection con = null;
+        List<Map<String, Object>> playerStats = new ArrayList<>();
+        String sql = "SELECT PlayerName, GameDate, PTS, RBS, ATS, BLKS, `FT%`, `3PT%`, TOV, Team " +
+                "FROM player_game_stats " +
+                "WHERE GameDate = ? AND Team = ?";
+
+
+        try {
+            con = DriverManager.getConnection(dburl, dbuname, dbpassword);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, date);
+            ps.setString(2, team);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Map<String, Object> stats = new HashMap<>();
+                stats.put("PlayerName", rs.getString("PlayerName"));
+                stats.put("GameDate", rs.getString("GameDate"));
+                stats.put("PTS", rs.getInt("PTS"));
+                stats.put("RBS", rs.getInt("RBS"));
+                stats.put("ATS", rs.getInt("ATS"));
+                stats.put("BLKS", rs.getInt("BLKS"));
+                stats.put("FT%", rs.getDouble("FT%"));
+                stats.put("3PT%", rs.getDouble("3PT%"));
+                stats.put("TOV", rs.getInt("TOV"));
+                stats.put("Team", rs.getString("Team"));
+                playerStats.add(stats);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return playerStats;
+    }
+
 
 
 }

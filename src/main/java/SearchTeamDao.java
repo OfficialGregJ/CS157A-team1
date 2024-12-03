@@ -7,7 +7,7 @@ import com.Team;
 public class SearchTeamDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "password123";
+    private String dbpassword = "admin";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
     
     public List<Team> searchTeams(String name, String city) {

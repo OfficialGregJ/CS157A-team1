@@ -6,7 +6,7 @@ import com.Player;
 public class SearchPlayerDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "password123";
+    private String dbpassword = "admin";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
     
     public List<Player> searchPlayers(String name, String position) {

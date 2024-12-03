@@ -1,5 +1,8 @@
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +22,23 @@ public class GamesServlet extends HttpServlet {
 
         if (date != null && !date.isEmpty()) {
             List<Object[]> games = gamesDao.getGamesByDate(date);
+            Map<String, List<Map<String, Object>>> playerStatsByTeam = new HashMap<>();
+            
 
             int gameIndex = 1;
             for (Object[] game : games) {
+            	String team1 = (String) game[1];
+            	String team2 = (String) game[2];
+            	
+            	// Retrieve player stats for the given teams
+                List<Map<String, Object>> team1Stats = gamesDao.getPlayerStatsByTeamAndDate(date, team1);
+                List<Map<String, Object>> team2Stats = gamesDao.getPlayerStatsByTeamAndDate(date, team2);
+
+                // Add player stats to the map
+                playerStatsByTeam.put("game" + gameIndex + "_team1Stats", team1Stats);
+                playerStatsByTeam.put("game" + gameIndex + "_team2Stats", team2Stats);
+            	
+            	
                 request.setAttribute("game" + gameIndex + "_date", game[0]);
                 request.setAttribute("game" + gameIndex + "_team1", game[1]);
                 request.setAttribute("game" + gameIndex + "_team2", game[2]);
@@ -45,6 +62,7 @@ public class GamesServlet extends HttpServlet {
                 request.setAttribute("game" + gameIndex + "_team2TO", game[20]);
                 gameIndex++;
             }
+            request.setAttribute("playerStats", playerStatsByTeam);
             request.setAttribute("gameCount", games.size());
             request.getRequestDispatcher("gamesDetails.jsp").forward(request, response);
         } else {
