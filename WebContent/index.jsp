@@ -25,7 +25,7 @@
 
             <!-- Team Details -->
             <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Team Details</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">NBA Teams</h3>
                 <p class="text-gray-600 mb-4">View detailed statistics about NBA teams.</p>
                 <a href="displayTeams.jsp" class="inline-block px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
                     View Teams
