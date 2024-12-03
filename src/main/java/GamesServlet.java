@@ -18,41 +18,39 @@ public class GamesServlet extends HttpServlet {
         String date = request.getParameter("date");
 
         if (date != null && !date.isEmpty()) {
-            // Fetch game details for the specified date
-            Game game = gamesDao.getAllGameDetails(date);
-            if (game != null) {
-                request.setAttribute("date", game.getDate());
-                request.setAttribute("team1", game.getTeam1());
-                request.setAttribute("team2", game.getTeam2());
-                request.setAttribute("winner", game.getWinner());
-                request.setAttribute("loser", game.getLoser());
-                request.setAttribute("location", game.getLocation());
-                request.setAttribute("team1Pts", game.getTeam1Pts());
-                request.setAttribute("team2Pts", game.getTeam2Pts());
-                request.setAttribute("team1Rebounds", game.getTeam1Rebounds());
-                request.setAttribute("team2Rebounds", game.getTeam2Rebounds());
-                request.setAttribute("team1Assists", game.getTeam1Assists());
-                request.setAttribute("team2Assists", game.getTeam2Assists());
-                request.setAttribute("team1Blocks", game.getTeam1Blocks());
-                request.setAttribute("team2Blocks", game.getTeam2Blocks());
-                request.setAttribute("team1FT", game.getTeam1FT());
-                request.setAttribute("team2FT", game.getTeam2FT());
-                request.setAttribute("team13PT", game.getTeam13PT());
-                request.setAttribute("team23PT", game.getTeam23PT());
-                request.setAttribute("team1TO", game.getTeam1TO());
-                request.setAttribute("team2TO", game.getTeam2TO());
-                request.getRequestDispatcher("gamesDetails.jsp").forward(request, response);
-                return; // Stop further execution
-            } else {
-                request.setAttribute("errorMessage", "No game details found for the date: " + date);
-                request.getRequestDispatcher("games.jsp").forward(request, response);
-                return;
-            }
-        }
+            List<Object[]> games = gamesDao.getGamesByDate(date);
 
-        // If no specific date is provided, fetch all available game dates
-        List<String> gameDates = gamesDao.getAllDates();
-        request.setAttribute("gameDates", gameDates);
-        request.getRequestDispatcher("games.jsp").forward(request, response);
+            int gameIndex = 1;
+            for (Object[] game : games) {
+                request.setAttribute("game" + gameIndex + "_date", game[0]);
+                request.setAttribute("game" + gameIndex + "_team1", game[1]);
+                request.setAttribute("game" + gameIndex + "_team2", game[2]);
+                request.setAttribute("game" + gameIndex + "_winner", game[3]);
+                request.setAttribute("game" + gameIndex + "_loser", game[4]);
+                request.setAttribute("game" + gameIndex + "_location", game[5]);
+                request.setAttribute("game" + gameIndex + "_videoUrl", game[6]);
+                request.setAttribute("game" + gameIndex + "_team1Pts", game[7]);
+                request.setAttribute("game" + gameIndex + "_team2Pts", game[8]);
+                request.setAttribute("game" + gameIndex + "_team1Rebounds", game[9]);
+                request.setAttribute("game" + gameIndex + "_team2Rebounds", game[10]);
+                request.setAttribute("game" + gameIndex + "_team1Assists", game[11]);
+                request.setAttribute("game" + gameIndex + "_team2Assists", game[12]);
+                request.setAttribute("game" + gameIndex + "_team1Blocks", game[13]);
+                request.setAttribute("game" + gameIndex + "_team2Blocks", game[14]);
+                request.setAttribute("game" + gameIndex + "_team1FT", game[15]);
+                request.setAttribute("game" + gameIndex + "_team2FT", game[16]);
+                request.setAttribute("game" + gameIndex + "_team13PT", game[17]);
+                request.setAttribute("game" + gameIndex + "_team23PT", game[18]);
+                request.setAttribute("game" + gameIndex + "_team1TO", game[19]);
+                request.setAttribute("game" + gameIndex + "_team2TO", game[20]);
+                gameIndex++;
+            }
+            request.setAttribute("gameCount", games.size());
+            request.getRequestDispatcher("gamesDetails.jsp").forward(request, response);
+        } else {
+            List<String> gameDates = gamesDao.getAllDates();
+            request.setAttribute("gameDates", gameDates);
+            request.getRequestDispatcher("games.jsp").forward(request, response);
+        }
     }
 }

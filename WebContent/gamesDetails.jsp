@@ -16,35 +16,36 @@
         <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">NBA Game Details</h1>
 
         <%
-            String date = (String) request.getAttribute("date");
-            String team1 = (String) request.getAttribute("team1");
-            String team2 = (String) request.getAttribute("team2");
-            String winner = (String) request.getAttribute("winner");
-            String loser = (String) request.getAttribute("loser");
-            String location = (String) request.getAttribute("location");
-            
-            Integer team1Pts = (Integer) request.getAttribute("team1Pts");
-            Integer team2Pts = (Integer) request.getAttribute("team2Pts");
-            Integer team1Rebounds = (Integer) request.getAttribute("team1Rebounds");
-            Integer team2Rebounds = (Integer) request.getAttribute("team2Rebounds");
-            Integer team1Assists = (Integer) request.getAttribute("team1Assists");
-            Integer team2Assists = (Integer) request.getAttribute("team2Assists");
-            Integer team1Blocks = (Integer) request.getAttribute("team1Blocks");
-            Integer team2Blocks = (Integer) request.getAttribute("team2Blocks");
-            Double team1FT = (Double) request.getAttribute("team1FT");
-            Double team2FT = (Double) request.getAttribute("team2FT");
-            Double team13PT = (Double) request.getAttribute("team13PT");
-            Double team23PT = (Double) request.getAttribute("team23PT");
-            Integer team1TO = (Integer) request.getAttribute("team1TO");
-            Integer team2TO = (Integer) request.getAttribute("team2TO");
-
-            if (date != null && team1 != null && team2 != null) {
+        Integer gameCount = (Integer) request.getAttribute("gameCount");
+        if (gameCount != null && gameCount > 0) {
+            for (int i = 1; i <= gameCount; i++) {
+                String date = (String) request.getAttribute("game" + i + "_date");
+                String team1 = (String) request.getAttribute("game" + i + "_team1");
+                String team2 = (String) request.getAttribute("game" + i + "_team2");
+                String winner = (String) request.getAttribute("game" + i + "_winner");
+                String loser = (String) request.getAttribute("game" + i + "_loser");
+                String location = (String) request.getAttribute("game" + i + "_location");
+                String videoUrl = (String) request.getAttribute("game" + i + "_videoUrl");
+                Integer team1Pts = (Integer) request.getAttribute("game" + i + "_team1Pts");
+                Integer team2Pts = (Integer) request.getAttribute("game" + i + "_team2Pts");
+                Integer team1Rebounds = (Integer) request.getAttribute("game" + i + "_team1Rebounds");
+                Integer team2Rebounds = (Integer) request.getAttribute("game" + i + "_team2Rebounds");
+                Integer team1Assists = (Integer) request.getAttribute("game" + i + "_team1Assists");
+                Integer team2Assists = (Integer) request.getAttribute("game" + i + "_team2Assists");
+                Integer team1Blocks = (Integer) request.getAttribute("game" + i + "_team1Blocks");
+                Integer team2Blocks = (Integer) request.getAttribute("game" + i + "_team2Blocks");
+                Double team1FT = (Double) request.getAttribute("game" + i + "_team1FT");
+                Double team2FT = (Double) request.getAttribute("game" + i + "_team2FT");
+                Double team13PT = (Double) request.getAttribute("game" + i + "_team13PT");
+                Double team23PT = (Double) request.getAttribute("game" + i + "_team23PT");
+                Integer team1TO = (Integer) request.getAttribute("game" + i + "_team1TO");
+                Integer team2TO = (Integer) request.getAttribute("game" + i + "_team2TO");
         %>
 
         <!-- Flexbox Layout -->
         <div class="flex flex-col lg:flex-row gap-6">
             <!-- Game Details Box -->
-            <div class="bg-white rounded-lg shadow-md p-6 w-full lg:w-1/2 space-y-4">
+            <div class="bg-white rounded-lg shadow-md p-6 mt-6 w-full lg:w-1/2 space-y-4">
                 <h2 class="text-2xl font-bold text-blue-600 mb-4">Game Details</h2>
                 <p class="text-gray-600">
                     <span class="font-medium">Date:</span> <%= date %>
@@ -61,10 +62,32 @@
                 <p class="text-gray-600">
                     <span class="font-medium">Location:</span> <%= location %>
                 </p>
+                <% if (videoUrl != null && !videoUrl.isEmpty()) { %>
+		        <div class="mt-4">
+		            <h3 class="text-xl font-semibold mb-2">Watch the Game</h3>
+		            <% if (videoUrl.contains("youtube.com") || videoUrl.contains("youtu.be")) { %>
+		                <!-- Embed YouTube Video -->
+		                <iframe width="100%" height="315" 
+		                        src="<%= videoUrl.replace("watch?v=", "embed/") %>" 
+		                        frameborder="0" 
+		                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+		                        allowfullscreen>
+		                </iframe>
+		            <% } else { %>
+		                <!-- Embed MP4 Video -->
+		                <video controls width="100%">
+		                    <source src="<%= videoUrl %>" type="video/mp4">
+		                    Your browser does not support the video tag.
+		                </video>
+		            <% } %>
+		        </div>
+		    <% } else { %>
+		        <p class="italic text-gray-500">No video available for this game.</p>
+		    <% } %>
             </div>
 
             <!-- Game Statistics Box -->
-            <div class="bg-white rounded-lg shadow-md p-6 w-full lg:w-1/2 space-y-4">
+            <div class="bg-white rounded-lg shadow-md p-6 mt-6 w-full lg:w-1/2 space-y-4">
                 <h2 class="text-2xl font-bold text-blue-600 mb-4">NBA Game Statistics</h2>
                 <p class="text-gray-600">
                     <span class="font-medium"><%= team1 %> Points:</span> <%= team1Pts %>
@@ -94,6 +117,7 @@
         </div>
 
         <%
+            }
             } else {
         %>
             <p class="text-center text-red-500">Game details not found.</p>
