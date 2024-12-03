@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.TeamDao;
+
 @WebServlet("/EditTeamServlet")
 public class EditTeamServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -18,11 +20,13 @@ public class EditTeamServlet extends HttpServlet {
 
         TeamDao teamDao = new TeamDao();
 
-        if (originalName != null && !originalName.isEmpty()) {
-            teamDao.updateTeam(originalName, newName, city, stadium);
-            response.sendRedirect("manageTeams.jsp");
-        } else {
-            response.sendRedirect("manageTeams.jsp?error=Team not found.");
+        try {
+            // Update team and stats
+            teamDao.updateTeamAndStats(originalName, newName, city, stadium);
+            response.sendRedirect("manageTeams.jsp?success=Team updated successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("editTeam.jsp?team=" + originalName + "&error=Failed to update team");
         }
     }
 }

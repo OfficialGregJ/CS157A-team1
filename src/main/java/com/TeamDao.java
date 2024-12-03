@@ -123,6 +123,57 @@ public class TeamDao {
             e.printStackTrace();
         }
     }
+    
+    public void updateTeamAndStats(String originalName, String newName, String city, String stadium) {
+        loadDriver(dbdriver);
+        Connection con = null;
+
+        String updateTeamSql = "UPDATE `deep-drive`.team SET Name = ?, City = ?, Stadium = ? WHERE Name = ?";
+        String updateStatsSql = "UPDATE `deep-drive`.team_statistics SET Team = ? WHERE Team = ?";
+
+        try {
+            con = getConnection();
+            con.setAutoCommit(false); // Begin transaction
+
+            // Update team details
+            try (PreparedStatement teamPs = con.prepareStatement(updateTeamSql)) {
+                teamPs.setString(1, newName);
+                teamPs.setString(2, city);
+                teamPs.setString(3, stadium);
+                teamPs.setString(4, originalName);
+                teamPs.executeUpdate();
+            }
+
+            // Update team name in team_statistics
+            try (PreparedStatement statsPs = con.prepareStatement(updateStatsSql)) {
+                statsPs.setString(1, newName);
+                statsPs.setString(2, originalName);
+                statsPs.executeUpdate();
+            }
+
+            con.commit(); // Commit transaction
+
+        } catch (SQLException e) {
+            if (con != null) {
+                try {
+                    con.rollback(); // Rollback transaction in case of failure
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
 
     
