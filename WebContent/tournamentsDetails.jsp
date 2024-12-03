@@ -22,6 +22,7 @@
             String team2 = (String) request.getAttribute("team2");
             String winner = (String) request.getAttribute("winner");
             String location = (String) request.getAttribute("location");
+            String videoUrl = (String) request.getAttribute("video_url");
             
             Integer team1Pts = (Integer) request.getAttribute("team1Pts");
             Integer team2Pts = (Integer) request.getAttribute("team2Pts");
@@ -61,6 +62,28 @@
                 <p class="text-gray-600">
                     <span class="font-medium">Location:</span> <%= location %>
                 </p>
+                <% if (videoUrl != null && !videoUrl.isEmpty()) { %>
+			        <div class="mt-4">
+			            <h3 class="text-xl font-semibold mb-2">Watch the Game</h3>
+			            <% if (videoUrl.contains("youtube.com") || videoUrl.contains("youtu.be")) { %>
+		                <!-- Embed YouTube Video -->
+		                <iframe width="100%" height="315" 
+		                        src="<%= videoUrl.replace("watch?v=", "embed/") %>" 
+		                        frameborder="0" 
+		                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+		                        allowfullscreen>
+		                </iframe>
+		            <% } else { %>
+		                <!-- Embed MP4 Video -->
+		                <video controls width="100%">
+		                    <source src="<%= videoUrl %>" type="video/mp4">
+		                    Your browser does not support the video tag.
+		                </video>
+		            <% } %>
+		        </div>
+		    <% } else { %>
+		        <p class="italic text-gray-500">No video available for this game.</p>
+		    <% } %>
             </div>
 
             <!-- Tournament Statistics Box -->

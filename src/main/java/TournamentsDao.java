@@ -43,7 +43,7 @@ public class TournamentsDao {
         loadDriver(dbdriver);
         Connection con = null;
         Tournament tournament = null;
-        String sql = "SELECT t.TournamentName, t.Date, t.Team1, t.Team2, t.Winner, t.Location, " +
+        String sql = "SELECT t.TournamentName, t.Date, t.Team1, t.Team2, t.Winner, t.Location, t.video_url, " +
                 "ts.Team1Pts, ts.Team2Pts, ts.Team1Rebounds, ts.Team2Rebounds, " +
                 "ts.Team1Assists, ts.Team2Assists, ts.Team1Blocks, ts.Team2Blocks, " +
                 "ts.`Team1FT%`, ts.`Team2FT%`, ts.`Team13PT%`, ts.`Team23PT%`, " +
@@ -67,6 +67,7 @@ public class TournamentsDao {
                 tournament.setTeam2(rs.getString("Team2"));
                 tournament.setWinner(rs.getString("Winner"));
                 tournament.setLocation(rs.getString("Location"));
+                tournament.setVideoUrl(rs.getString("video_url"));
                 tournament.setTeam1Pts(rs.getInt("Team1Pts"));
                 tournament.setTeam2Pts(rs.getInt("Team2Pts"));
                 tournament.setTeam1Rebounds(rs.getInt("Team1Rebounds"));

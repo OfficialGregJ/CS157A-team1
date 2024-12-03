@@ -5,6 +5,7 @@ public class Tournament {
     private String team2;
     private String winner;
     private String location;
+    private String videoUrl;
     private int team1Pts;
 	private int team2Pts;
     private int team1Rebounds;
@@ -140,5 +141,11 @@ public class Tournament {
 	}
 	public void setTeam2TO(int team2to) {
 		team2TO = team2to;
+	}
+	public String getVideoUrl() {
+		return videoUrl;
+	}
+	public void setVideoUrl(String videoUrl) {
+		this.videoUrl = videoUrl;
 	}
 }

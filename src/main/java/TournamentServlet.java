@@ -28,6 +28,7 @@ public class TournamentServlet extends HttpServlet {
                 request.setAttribute("team2", tournament.getTeam2());
                 request.setAttribute("winner", tournament.getWinner());
                 request.setAttribute("location", tournament.getLocation());
+                request.setAttribute("video_url", tournament.getVideoUrl());
                 request.setAttribute("team1Pts", tournament.getTeam1Pts());
                 request.setAttribute("team2Pts", tournament.getTeam2Pts());
                 request.setAttribute("team1Rebounds", tournament.getTeam1Rebounds());
