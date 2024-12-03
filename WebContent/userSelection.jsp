@@ -22,7 +22,7 @@
                     User Registration
                 </button>
             </form>
-            <form action="adminRegister.jsp" method="get" class="w-full">
+            <form action="verifyAdminCode.jsp" method="get" class="w-full">
                 <button type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-150 ease-in-out">
                     <i data-lucide="shield" class="h-5 w-5 mr-2"></i>
                     Admin Registration
