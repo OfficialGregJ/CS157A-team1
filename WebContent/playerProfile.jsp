@@ -53,6 +53,11 @@
                     </div>
                 </div>
                 <div class="p-6 border-t">
+                		<%
+                    	
+                    	String username = (String) session.getAttribute("userUsername");
+                    	if (username != null && !username.isEmpty()) {
+                    	%>
                     <form action="AddToFavorites" method="POST">
                         <input type="hidden" name="playerName" value="<%= player.getName() %>">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -60,6 +65,14 @@
                         </button>
                     </form>
                 </div>
+                <%
+                    } else {
+                %>	
+                	<p class="text-gray-500 italic">Please <a href="userLogin.jsp" class="text-blue-500 hover:underline">log in</a> to add players to favorites.</p>
+                    
+                <%
+                    }
+                %>
             </div>
         </div>
 

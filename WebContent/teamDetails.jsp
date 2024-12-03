@@ -34,21 +34,27 @@
                         </p>
                     </div>
                     <div class="p-6 border-t">
+                    	<%
+                    	
+                    	String username = (String) session.getAttribute("userUsername");
+                    	if (username != null && !username.isEmpty()) {
+                    	%>
 	                    <form action="AddToTeamFavorites" method="POST">
 						    <input type="hidden" name="teamNames" value="<%= teamName %>">
 						    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
 						        Add to Favorites
 						    </button>
 						</form>
-
-                </div>
+                
                 <%
                     } else {
-                %>
-                    <p class="text-center text-gray-500 italic">Team details not found.</p>
+                %>	
+                	<p class="text-gray-500 italic">Please <a href="userLogin.jsp" class="text-blue-500 hover:underline">log in</a> to add teams to favorites.</p>
                 <%
                     }
+                   }
                 %>
+              </div>
             </div>
 
             <!-- Team Stats Container -->

@@ -23,6 +23,14 @@ public class AddToFavoritesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("userUsername");
+        
+        if (username == null || username.isEmpty()) {
+            // Redirect to login page if the user is not logged in
+            response.sendRedirect("userLogin.jsp");
+            return;
+        }
+        
+        
         String playerName = request.getParameter("playerName");
 
         if (username != null && playerName != null) {

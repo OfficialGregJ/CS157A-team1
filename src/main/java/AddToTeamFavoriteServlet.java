@@ -25,6 +25,12 @@ public class AddToTeamFavoriteServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String username = (String) session.getAttribute("userUsername");
+        
+        if (username == null || username.isEmpty()) {
+            // Redirect to login page if the user is not logged in
+            response.sendRedirect("userLogin.jsp");
+            return;
+        }
         String teamName = request.getParameter("teamNames");
         
 
