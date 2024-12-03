@@ -28,7 +28,8 @@ CREATE TABLE `tournaments` (
   `Team1` varchar(45) NOT NULL,
   `Team2` varchar(45) NOT NULL,
   `Winner` varchar(45) DEFAULT NULL,
-  `Location` varchar(45) DEFAULT NULL
+  `Location` varchar(45) DEFAULT NULL,
+  `video_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +39,7 @@ CREATE TABLE `tournaments` (
 
 LOCK TABLES `tournaments` WRITE;
 /*!40000 ALTER TABLE `tournaments` DISABLE KEYS */;
-INSERT INTO `tournaments` VALUES ('Eastern Conference Finals Game 4','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse'),('NBA Finals Game 5','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden'),('In-Season Tournament Group A Stage','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse'),('In-Season Tournament Group B Stage','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum'),('In-Season Tournament West Quarterfinal 1','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center'),('In-Season Tournament West Quarterfinal 2','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena'),('In-Season Tournament Finals','2023-12-09','Indiana Pacers','Los Angeles Lakers','Los Angeles Lakers','T-Mobile Arena'),('Play-In Game 1','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center'),('Play-In Game 2','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center'),('Western Conference Finals Game 5','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center');
+INSERT INTO `tournaments` VALUES ('Eastern Conference Finals Game 4','2024-05-27','Boston Celtics','Indiana Pacers','Boston Celtics','Gainbridge Fieldhouse','https://www.youtube.com/watch?v=YlrNKOnByTU'),('NBA Finals Game 5','2024-06-17','Dallas Mavericks','Boston Celtics','Boston Celtics','TD Garden','https://www.youtube.com/watch?v=6kW6N2Ax9XA'),('In-Season Tournament Group A Stage','2023-11-03','Cleveland Cavaliers','Indiana Pacers','Indiana Pacers','Gainbridge Fieldhouse','https://www.youtube.com/watch?v=k4xwzhi1RSs'),('In-Season Tournament Group B Stage','2023-11-03','New York Knicks','Milwaukee Bucks','Milwaukee Bucks','Fiserv Forum','https://www.youtube.com/watch?v=SQm91d9mGQs'),('In-Season Tournament West Quarterfinal 1','2023-12-04','New Orleans Pelicans','Sacramento Kings','New Orleans Pelicans','Golden 1 Center','https://www.youtube.com/watch?v=tR7q722cXJU'),('In-Season Tournament West Quarterfinal 2','2023-12-05','Phoenix Suns','Los Angeles Lakers','Los Angeles Lakers','Crypto.com Arena','https://www.youtube.com/watch?v=DM31F9qQGWw'),('In-Season Tournament Finals','2023-12-09','Indiana Pacers','Los Angeles Lakers','Los Angeles Lakers','T-Mobile Arena','https://www.youtube.com/watch?v=NJNSgOE0AvE'),('Play-In Game 1','2024-04-16','Golden State Warriors','Sacramento Kings','Sacramento Kings','Golden 1 Center','https://www.youtube.com/watch?v=1MIVbc5lfFA'),('Play-In Game 2','2024-04-19','Sacamento Kings','New Orleans Pelicans','New Orleans Pelicans','Smoothie King Center','https://www.youtube.com/watch?v=OOD-X88f27Q'),('Western Conference Finals Game 5','2024-05-30','Dallas Mavericks','Minnesota Timberwolves','Dallas Mavericks','Target Center','https://www.youtube.com/watch?v=VUu2xSxGPfk');
 /*!40000 ALTER TABLE `tournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-01  4:34:55
+-- Dump completed on 2024-12-02 18:58:59
