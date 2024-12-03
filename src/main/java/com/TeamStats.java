@@ -1,15 +1,15 @@
 package com;
 public class TeamStats {
-    private double PPG;
-    private double APG;
-    private double SPG;
-    private double BPG;
-    private double TOPG;
-    private double FTPercentage;
-    private double threePTPercentage;
-    private int gamesPlayed;
-    private int wins;
-    private int losses;
+	private double PPG = 0;
+    private double APG = 0;
+    private double SPG = 0;
+    private double BPG = 0;
+    private double TOPG = 0;
+    private double FTPercentage = 0;
+    private double threePTPercentage = 0;
+    private int gamesPlayed = 0;
+    private int wins = 0;
+    private int losses = 0;
     private double winPercentage;
 
     // Getters and Setters

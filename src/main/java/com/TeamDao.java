@@ -1,3 +1,5 @@
+package com;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -122,6 +124,7 @@ public class TeamDao {
         }
     }
 
+
     
     public void deleteTeam(String teamName) {
         String sql = "DELETE FROM `deep-drive`.team WHERE Name = ?";
@@ -152,9 +155,6 @@ public class TeamDao {
     }
 
 
-
-    
-    
     
     public Team getTeamDetailsWithStats(String teamName) {
         loadDriver(dbdriver);
