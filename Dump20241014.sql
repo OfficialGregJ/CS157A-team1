@@ -149,7 +149,8 @@ CREATE TABLE `player_game_stats` (
   `BLKS` int DEFAULT NULL,
   `FT%` double DEFAULT NULL,
   `3PT%` double DEFAULT NULL,
-  `TOV` int DEFAULT NULL
+  `TOV` int DEFAULT NULL,
+  `Team` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -159,7 +160,7 @@ CREATE TABLE `player_game_stats` (
 
 LOCK TABLES `player_game_stats` WRITE;
 /*!40000 ALTER TABLE `player_game_stats` DISABLE KEYS */;
-INSERT INTO `player_game_stats` VALUES ('DeMar DeRozan','2024-01-08',18,7,7,1,0.75,0.333,3),('Jayson Tatum','2024-02-13',41,14,5,1,1,0.538,2),('Joel Embiid','2023-11-02',28,13,7,1,0.923,0,4),('Kyle Kuzma','2023-12-01',27,6,1,2,0.833,0.333,6),('Kyrie Irving','2023-12-01',10,5,5,0,0.8,0,1),('Lebron James','2023-10-24',21,8,5,1,0,0.25,0),('Mikal Bridges','2024-01-02',13,3,2,0,1,0.4,4),('Stephen Curry','2023-10-24',27,5,1,0,0.857,0.4,2),('Victor Wembanyama','2023-11-02',38,10,2,2,0.833,0.5,2),('Victor Wembanyama','2024-02-10',21,4,3,1,1,0.5,4);
+INSERT INTO `player_game_stats` VALUES ('DeMar DeRozan','2024-01-08',18,7,7,1,0.75,0.333,3,'Sacramento Kings'),('Jayson Tatum','2024-02-13',41,14,5,1,1,0.538,2,'Boston Celtics'),('Joel Embiid','2023-11-02',28,13,7,1,0.923,0,4,'Philadelphia 76ers'),('Kyle Kuzma','2023-12-01',27,6,1,2,0.833,0.333,6,'Washington Wizards'),('Kyrie Irving','2023-12-01',10,5,5,0,0.8,0,1,'Dallas Mavericks'),('Lebron James','2023-10-24',21,8,5,1,0,0.25,0,'Los Angeles Lakers'),('Mikal Bridges','2024-01-02',13,3,2,0,1,0.4,4,'New York Knicks'),('Stephen Curry','2023-10-24',27,5,1,0,0.857,0.4,2,'Golden State Warriors'),('Victor Wembanyama','2023-11-02',38,10,2,2,0.833,0.5,2,'San Antonio Spurs'),('Victor Wembanyama','2024-02-10',21,4,3,1,1,0.5,4,'San Antonio Spurs');
 /*!40000 ALTER TABLE `player_game_stats` ENABLE KEYS */;
 UNLOCK TABLES;
 
