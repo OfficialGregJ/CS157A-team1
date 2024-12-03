@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,13 @@ public class GamesServlet extends HttpServlet {
             if (!games.isEmpty()) {
                 request.setAttribute("date", date);
                 request.setAttribute("games", games);
+
+                // Fetch player stats for each game
+                for (Game game : games) {
+                    Map<String, List<PlayerGameStats>> playerStats = gamesDao.getPlayerStatsForGame(date, game.getTeam1(), game.getTeam2());
+                    game.setPlayerStats(playerStats);
+                }
+
                 request.getRequestDispatcher("gamesDetails.jsp").forward(request, response);
                 return;
             } else {
@@ -35,5 +43,4 @@ public class GamesServlet extends HttpServlet {
         request.getRequestDispatcher("games.jsp").forward(request, response);
     }
 }
-
 

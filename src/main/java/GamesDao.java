@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GamesDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
@@ -82,5 +84,41 @@ public class GamesDao {
             e.printStackTrace();
         }
         return games;
+    }
+    public Map<String, List<PlayerGameStats>> getPlayerStatsForGame(String date, String team1, String team2) {
+        loadDriver(dbdriver);
+        Map<String, List<PlayerGameStats>> playerStatsByTeam = new HashMap<>();
+        playerStatsByTeam.put(team1, new ArrayList<>());
+        playerStatsByTeam.put(team2, new ArrayList<>());
+
+        String sql = "SELECT * FROM player_game_stats WHERE GameDate = ? AND (Team = ? OR Team = ?)";
+
+        try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, date);
+            ps.setString(2, team1);
+            ps.setString(3, team2);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    PlayerGameStats stats = new PlayerGameStats();
+                    stats.setPlayerName(rs.getString("PlayerName"));
+                    stats.setTeam(rs.getString("Team"));
+                    stats.setPoints(rs.getInt("PTS"));
+                    stats.setRebounds(rs.getInt("RBS"));
+                    stats.setAssists(rs.getInt("ATS"));
+                    stats.setBlocks(rs.getInt("BLKS"));
+                    stats.setFreeThrowPercentage(rs.getDouble("FT%"));
+                    stats.setThreePointPercentage(rs.getDouble("3PT%"));
+                    stats.setTurnovers(rs.getInt("TOV"));
+
+                    playerStatsByTeam.get(stats.getTeam()).add(stats);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return playerStatsByTeam;
     }
 }

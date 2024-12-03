@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.yourpackage.Game" %>
+<%@ page import="com.yourpackage.PlayerStats" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,93 +17,87 @@
 <body class="bg-gray-100 min-h-screen">
     <!-- Main Content -->
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">NBA Game Details</h1>
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">NBA Game Details for <%= request.getAttribute("date") %></h1>
 
         <%
-            String date = (String) request.getAttribute("date");
-            String team1 = (String) request.getAttribute("team1");
-            String team2 = (String) request.getAttribute("team2");
-            String winner = (String) request.getAttribute("winner");
-            String loser = (String) request.getAttribute("loser");
-            String location = (String) request.getAttribute("location");
-            
-            Integer team1Pts = (Integer) request.getAttribute("team1Pts");
-            Integer team2Pts = (Integer) request.getAttribute("team2Pts");
-            Integer team1Rebounds = (Integer) request.getAttribute("team1Rebounds");
-            Integer team2Rebounds = (Integer) request.getAttribute("team2Rebounds");
-            Integer team1Assists = (Integer) request.getAttribute("team1Assists");
-            Integer team2Assists = (Integer) request.getAttribute("team2Assists");
-            Integer team1Blocks = (Integer) request.getAttribute("team1Blocks");
-            Integer team2Blocks = (Integer) request.getAttribute("team2Blocks");
-            Double team1FT = (Double) request.getAttribute("team1FT");
-            Double team2FT = (Double) request.getAttribute("team2FT");
-            Double team13PT = (Double) request.getAttribute("team13PT");
-            Double team23PT = (Double) request.getAttribute("team23PT");
-            Integer team1TO = (Integer) request.getAttribute("team1TO");
-            Integer team2TO = (Integer) request.getAttribute("team2TO");
-
-            if (date != null && team1 != null && team2 != null) {
+            List<Game> games = (List<Game>) request.getAttribute("games");
+            if (games != null && !games.isEmpty()) {
+                for (Game game : games) {
         %>
-
-        <!-- Flexbox Layout -->
-        <div class="flex flex-col lg:flex-row gap-6">
-            <!-- Game Details Box -->
-            <div class="bg-white rounded-lg shadow-md p-6 w-full lg:w-1/2 space-y-4">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Game Details</h2>
-                <p class="text-gray-600">
-                    <span class="font-medium">Date:</span> <%= date %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Teams:</span> <%= team1 %> vs <%= team2 %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Winner:</span> <%= winner %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Loser:</span> <%= loser %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Location:</span> <%= location %>
-                </p>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-2xl font-bold text-blue-600 mb-4"><%= game.getTeam1() %> vs <%= game.getTeam2() %></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Game Details -->
+                    <div class="space-y-2">
+                        <p><span class="font-medium">Winner:</span> <%= game.getWinner() %></p>
+                        <p><span class="font-medium">Loser:</span> <%= game.getLoser() %></p>
+                        <p><span class="font-medium">Location:</span> <%= game.getLocation() %></p>
+                    </div>
+                    <!-- Game Statistics -->
+                    <div class="space-y-2">
+                        <p><span class="font-medium">Score:</span> <%= game.getTeam1() %> (<%= game.getTeam1Pts() %>) - <%= game.getTeam2() %> (<%= game.getTeam2Pts() %>)</p>
+                        <p><span class="font-medium">Rebounds:</span> <%= game.getTeam1() %> (<%= game.getTeam1Rebounds() %>) vs <%= game.getTeam2() %> (<%= game.getTeam2Rebounds() %>)</p>
+                        <p><span class="font-medium">Assists:</span> <%= game.getTeam1() %> (<%= game.getTeam1Assists() %>) vs <%= game.getTeam2() %> (<%= game.getTeam2Assists() %>)</p>
+                        <p><span class="font-medium">Blocks:</span> <%= game.getTeam1() %> (<%= game.getTeam1Blocks() %>) vs <%= game.getTeam2() %> (<%= game.getTeam2Blocks() %>)</p>
+                        <p><span class="font-medium">Free Throw %:</span> <%= game.getTeam1() %> (<%= Math.round(game.getTeam1FT() * 100) %>%) vs <%= game.getTeam2() %> (<%= Math.round(game.getTeam2FT() * 100) %>%)</p>
+                        <p><span class="font-medium">3PT %:</span> <%= game.getTeam1() %> (<%= Math.round(game.getTeam13PT() * 100) %>%) vs <%= game.getTeam2() %> (<%= Math.round(game.getTeam23PT() * 100) %>%)</p>
+                        <p><span class="font-medium">Turnovers:</span> <%= game.getTeam1() %> (<%= game.getTeam1TO() %>) vs <%= game.getTeam2() %> (<%= game.getTeam2TO() %>)</p>
+                    </div>
+                </div>
+                
+                <!-- Player Details -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Player Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <% for (Map.Entry<String, List<PlayerStats>> entry : game.getPlayerStats().entrySet()) { %>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2"><%= entry.getKey() %></h4>
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="bg-gray-200">
+                                            <th class="px-2 py-1 text-left">Player</th>
+                                            <th class="px-2 py-1 text-right">PTS</th>
+                                            <th class="px-2 py-1 text-right">RBS</th>
+                                            <th class="px-2 py-1 text-right">AST</th>
+                                            <th class="px-2 py-1 text-right">BLK</th>
+                                            <th class="px-2 py-1 text-right">FT%</th>
+                                            <th class="px-2 py-1 text-right">3PT%</th>
+                                            <th class="px-2 py-1 text-right">TOV</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (PlayerStats stats : entry.getValue()) { %>
+                                            <tr>
+                                                <td class="px-2 py-1"><%= stats.getPlayerName() %></td>
+                                                <td class="px-2 py-1 text-right"><%= stats.getPoints() %></td>
+                                                <td class="px-2 py-1 text-right"><%= stats.getRebounds() %></td>
+                                                <td class="px-2 py-1 text-right"><%= stats.getAssists() %></td>
+                                                <td class="px-2 py-1 text-right"><%= stats.getBlocks() %></td>
+                                                <td class="px-2 py-1 text-right"><%= String.format("%.1f", stats.getFreeThrowPercentage()) %>%</td>
+                                                <td class="px-2 py-1 text-right"><%= String.format("%.1f", stats.getThreePointPercentage()) %>%</td>
+                                                <td class="px-2 py-1 text-right"><%= stats.getTurnovers() %></td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
             </div>
-
-            <!-- Game Statistics Box -->
-            <div class="bg-white rounded-lg shadow-md p-6 w-full lg:w-1/2 space-y-4">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">NBA Game Statistics</h2>
-                <p class="text-gray-600">
-                    <span class="font-medium"><%= team1 %> Points:</span> <%= team1Pts %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium"><%= team2 %> Points:</span> <%= team2Pts %>
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Rebounds:</span> <%= team1 %> (<%= team1Rebounds %>) vs <%= team2 %> (<%= team2Rebounds %>)
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Assists:</span> <%= team1 %> (<%= team1Assists %>) vs <%= team2 %> (<%= team2Assists %>)
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Blocks:</span> <%= team1 %> (<%= team1Blocks %>) vs <%= team2 %> (<%= team2Blocks %>)
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Free Throw %:</span> <%= team1 %> (<%= Math.round(team1FT * 100) %>%) vs <%= team2 %> (<%= Math.round(team2FT * 100) %>%)
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">3PT %:</span> <%= team1 %> (<%= Math.round(team13PT * 100) %>%) vs <%= team2 %> (<%= Math.round(team23PT * 100) %>%)
-                </p>
-                <p class="text-gray-600">
-                    <span class="font-medium">Turnovers:</span> <%= team1 %> (<%= team1TO %>) vs <%= team2 %> (<%= team2TO %>)
-                </p>
-            </div>
-        </div>
-
         <%
+                }
             } else {
         %>
-            <p class="text-center text-red-500">Game details not found.</p>
+            <p class="text-center text-red-500">No games found for this date.</p>
         <%
             }
         %>
+        <div class="text-center mt-6">
+            <a href="GamesServlet" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Back to All Dates
+            </a>
+        </div>
     </div>
 </body>
 </html>

@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Map;
+
 public class Game {
     private String date;
     private String team1;
@@ -19,6 +22,7 @@ public class Game {
     private double team23PT;
     private int team1TO;
     private int team2TO;
+    private Map<String, List<PlayerGameStats>> playerStats;
 
     // Getters and Setters
     public String getDate() { return date; }
@@ -33,7 +37,13 @@ public class Game {
     public void setLoser(String loser) { this.loser = loser; }
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
-    
+    public Map<String, List<PlayerGameStats>> getPlayerStats() {
+        return playerStats;
+    }
+
+    public void setPlayerStats(Map<String, List<PlayerGameStats>> playerStats) {
+        this.playerStats = playerStats;
+    }
     public int getTeam1Pts() {
 		return team1Pts;
 	}
