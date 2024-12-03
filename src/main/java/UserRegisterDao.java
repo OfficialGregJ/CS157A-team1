@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.User;
+
 
 
 public class UserRegisterDao {

@@ -33,7 +33,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <a href="manageUsers.jsp" class="block bg-blue-100 p-4 rounded-lg shadow-md hover:bg-blue-200">
                    <h3 class="font-semibold mb-2">User Management</h3>
-                   <p>Manage users: view, add, edit, or delete users.</p>
+                   <p>Manage users: View or delete users.</p>
                 </a>
                 <a href="manageFavorites.jsp" class="block bg-green-100 p-4 rounded-lg shadow-md hover:bg-green-200">
                     <h3 class="font-semibold mb-2">Teams Management</h3>

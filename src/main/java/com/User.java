@@ -1,3 +1,4 @@
+package com;
 
 public class User {
 	private String uname, password, email;
