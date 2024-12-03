@@ -26,7 +26,8 @@ public class PlayerProfileDao {
                             rs.getString("Height"),
                             rs.getDouble("Weight"),
                             rs.getString("College"),
-                            rs.getInt("YearInNBA")
+                            rs.getInt("YearInNBA"),
+                            rs.getString("image_url")
                         );
                     }
                 }

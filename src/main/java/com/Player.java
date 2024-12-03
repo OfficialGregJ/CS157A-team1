@@ -7,8 +7,9 @@ public class Player {
     private String height;
     private double weight;
     private String college;
+    private String imageUrl;
     public Player(String name, String team, String position, int age, String height, double weight, String college,
-			int yearInNBA) {
+			int yearInNBA, String imageUrl) {
 		super();
 		this.name = name;
 		this.team = team;
@@ -17,6 +18,7 @@ public class Player {
 		this.height = height;
 		this.weight = weight;
 		this.college = college;
+		this.imageUrl = imageUrl;
 		this.yearInNBA = yearInNBA;
 	}
 	public Player() {
@@ -70,6 +72,12 @@ public class Player {
 	}
 	public void setYearInNBA(int yearInNBA) {
 		this.yearInNBA = yearInNBA;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }
