@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.FavoriteDao;
-@WebServlet("/AddToFavorites")
+@WebServlet("/AddToFavorites") //Establishes AddToFavorites
 public class AddToFavoritesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 	private FavoriteDao playerDao;

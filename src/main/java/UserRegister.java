@@ -30,28 +30,24 @@ public class UserRegister extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //When POST request sent, attempt to add newly registered user to the "user" table
 		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		User member = new User(username, password, email);
+		User member = new User(username, password, email); //Creates new User object
 		
-		UserRegisterDao rDao = new UserRegisterDao();
+		UserRegisterDao rDao = new UserRegisterDao(); //Create new UserRegisterDao object to run methods
 		String result = rDao.insert(member);
 		
-		if (result.equals("Data entered successfully")) {
+		if (result.equals("Data entered successfully")) { //If user added successfully, update current user's username and password to match newly registered user
 			request.getSession().setAttribute("userUsername", username);
 			request.getSession().setAttribute("userPassword", password);
 			response.sendRedirect("userPage.jsp");
-		} else if (result.contains("Duplicate entry")) {
-	        // Handle duplicate entry case
+		} else if (result.contains("Duplicate entry")) { //Handles duplicate entry case
 	        request.setAttribute("errorMessage", result);
 	        request.getRequestDispatcher("userRegister.jsp").forward(request, response);
-	    } else {
-	        // Handle general errors
+	    } else { //Handle any exceptions caught
 	        request.setAttribute("errorMessage", "An error occurred. Please try again.");
 	        request.getRequestDispatcher("userRegister.jsp").forward(request, response);
 	    }

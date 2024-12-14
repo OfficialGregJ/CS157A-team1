@@ -1,4 +1,4 @@
-public class Tournament {
+public class Tournament { //Creation of Tournament, stores information for each tournament
     private String name;
     private String date;
     private String team1;
@@ -21,7 +21,7 @@ public class Tournament {
     private int team1TO;
     private int team2TO;
 
-    // Getters and Setters
+    // Getters and Setters for each Tournament
     public String getName() {
         return name;
     }

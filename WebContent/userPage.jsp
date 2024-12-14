@@ -15,9 +15,10 @@
 <jsp:include page="header.jsp" />
 
 <main class="container mx-auto mt-8 px-4">
+<!-- Displaying logged in user's username -->
     <h1 class="text-3xl font-bold mb-6">Welcome, <%= session.getAttribute("userUsername") %>!</h1>
 
-    <!-- Favorites Section -->
+    <!--Displaying favorites section (teams and players) -->
     <section class="bg-white rounded-lg shadow-md p-6 mb-8">
         <h2 class="text-2xl font-semibold mb-4 flex items-center">
             <i data-lucide="star" class="w-6 h-6 mr-2 text-yellow-500"></i>
@@ -28,16 +29,17 @@
                 <h3 class="text-xl font-semibold mb-2">Teams</h3>
                 <ul class="space-y-2">
                     <%
+//                     Fetches the favorite teams of the current user from FavoriteDao.java
                     String username = (String) session.getAttribute("userUsername");
                     FavoriteDao favDao = FavoriteDao.getInstance();
-                    List<String> favoriteTeams = favDao.getFavoriteTeams(username);
-                    
-                    if (favoriteTeams != null && !favoriteTeams.isEmpty() && favoriteTeams.get(0) != null && !favoriteTeams.get(0).isEmpty()) {
-                        // Split the teams string into individual names
+                    List<String> favoriteTeams = favDao.getFavoriteTeams(username); //Ensures list is not empty & contains at least 1 valid team
+                    if (favoriteTeams != null && !favoriteTeams.isEmpty() && favoriteTeams.get(0) != null && !favoriteTeams.get(0).isEmpty()) { // Split the teams string into individual names
+                 
                         String[] teams = favoriteTeams.get(0).split(", ");
-                        for (String teamName : teams) {
+                        for (String teamName : teams) { //Iterates through all the favorite teams & parses them
                             	String encodedTeamName = URLEncoder.encode(teamName.trim(), "UTF-8");
                     %>
+<!--                     Displaying all the teams as well as an option to remove any favorites, which calls FavoritesServlet.java to update the list of favorite teams -->
 		                    <li class="flex items-center">
 		                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-blue-500"></i>
 		                        <a href="${pageContext.request.contextPath}/TeamServlet?team=<%= encodedTeamName %>" class="hover:text-blue-500"><%= teamName.trim() %></a>
@@ -51,9 +53,9 @@
                     <%
                        
                        }
-                    } else {
+                    } else { //Edge case: user does not have any teams favorited
                     %>
-                    <li class="text-gray-500 italic">No favorite teams added yet.</li>
+                    <li class="text-gray-500 italic">No favorite teams added yet.</li> 
                     <%
                     }
                     
@@ -65,15 +67,11 @@
                 <h3 class="text-xl font-semibold mb-2">Players</h3>
                 <ul class="space-y-2">
                     <%
-                    
-                    String password = (String) session.getAttribute("userPassword");
+                    String password = (String) session.getAttribute("userPassword"); //Same logic as teams, fetches list of all user's favorite players using FavoriteDao.java
                     FavoriteDao favPlayerDao = FavoriteDao.getInstance();
                     List<String> favoritePlayers = favPlayerDao.getFavoritePlayers(username);
-                    
-                 	// Ensure there is only one entry for a user's favorite players
-                    if (favoritePlayers != null && !favoritePlayers.isEmpty() && favoritePlayers.get(0) != null && !favoritePlayers.get(0).isEmpty()) {
-                        // Split the players string into individual names
-                        String[] players = favoritePlayers.get(0).split(", ");
+                    if (favoritePlayers != null && !favoritePlayers.isEmpty() && favoritePlayers.get(0) != null && !favoritePlayers.get(0).isEmpty()) { // Ensures list is not empty & contains at least 1 valid player
+                        String[] players = favoritePlayers.get(0).split(", "); // Split the players string into individual names
                         for (String playerName : players) {
                             String encodedPlayerName = URLEncoder.encode(playerName.trim(), "UTF-8");
                     %>
@@ -88,7 +86,7 @@
                     </li>
                     <%
 		            	}
-		        	} else {
+		        	} else { //Edge case: user has no players favorited
 		        	%>
 		        	<li class="text-gray-500 italic">No favorite players added yet.</li>
 		        	<%
@@ -105,7 +103,9 @@
         <i data-lucide="settings" class="w-6 h-6 mr-2 text-blue-500"></i>
         Settings
     </h2>
+<!--     Option for user to update their username and/or password, which calls UpdateSettingsServlet.java -->
     <form action="${pageContext.request.contextPath}/UpdateSettingsServlet" method="post" class="space-y-4">
+<!--     Divs for adding and styling area for user to input updated username and/or password -->
         <div>
             <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
             <input 

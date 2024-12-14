@@ -8,8 +8,10 @@ public class Player {
     private double weight;
     private String college;
     private String imageUrl;
-    public Player(String name, String team, String position, int age, String height, double weight, String college,
-			int yearInNBA, String imageUrl) {
+	private int yearInNBA;
+	
+	public Player(String name, String team, String position, int age, String height, double weight, String college,
+			int yearInNBA, String imageUrl) { //Creation of player object, which stores information for each player
 		super();
 		this.name = name;
 		this.team = team;
@@ -21,10 +23,8 @@ public class Player {
 		this.imageUrl = imageUrl;
 		this.yearInNBA = yearInNBA;
 	}
-	public Player() {
-		// TODO Auto-generated constructor stub
-	}
-	private int yearInNBA;
+	
+	//Getters and setters for Player object
 	public String getName() {
 		return name;
 	}

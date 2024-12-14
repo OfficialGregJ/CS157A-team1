@@ -10,7 +10,7 @@ public class UserDao {
     private String dbpassword = "password123";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
-    public void loadDriver(String dbDriver) {
+    public void loadDriver(String dbDriver) { //Loading driver
         try {
             Class.forName(dbDriver);
         } catch (ClassNotFoundException e) {
@@ -18,7 +18,7 @@ public class UserDao {
         }
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() { //Establishes connection to database using the url, username, and user password
         Connection con = null;
         try {
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
@@ -28,14 +28,14 @@ public class UserDao {
         return con;
     }
 
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers() { //Returns list of all users, queries "users" table to retrieve all users
         loadDriver(dbdriver);
         Connection con = getConnection();
         List<User> users = new ArrayList<>();
         String query = "SELECT Username, Email FROM `deep-drive`.users";
 
-        try (PreparedStatement ps = con.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+        try (PreparedStatement ps = con.prepareStatement(query); //Runs query onto database table
+             ResultSet rs = ps.executeQuery()) { 
             while (rs.next()) {
                 User user = new User();
                 user.setUname(rs.getString("Username"));
@@ -48,13 +48,13 @@ public class UserDao {
         return users;
     }
 
-    public String deleteUser(String username) {
+    public String deleteUser(String username) { //Deletes user from "users" table given the user's username
         loadDriver(dbdriver);
         Connection con = getConnection();
         String result = "User deleted successfully";
         String sql = "DELETE FROM `deep-drive`.users WHERE Username = ?";
 
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) { //Runs query onto database table
             ps.setString(1, username);
             ps.executeUpdate();
         } catch (SQLException e) {
