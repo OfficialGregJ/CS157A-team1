@@ -66,7 +66,14 @@
         <div class="bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Existing Games</h2>
             <ul class="divide-y divide-gray-200">
-                <% for (String game : games) { %>
+                <% for (String game : games) {
+                	// Extract individual components from the "gameDetails" string
+			        String[] parts = game.split(" - ");
+			        String gameDate = parts[0]; // Date
+			        String[] teams = parts[1].split(" vs ");
+			        String team1 = teams[0];    // Team1
+			        String team2 = teams[1];    // Team2
+			    %>
                     <li class="py-4 flex justify-between items-center">
                         <span class="text-gray-700 font-medium"><%= game %></span>
                         <div class="space-x-2">
@@ -75,7 +82,9 @@
                                 class="text-blue-500 hover:text-blue-700 font-semibold">Edit</a>
                             <!-- Delete Button -->
                             <form action="DeleteGameServlet" method="post" class="inline">
-                                <input type="hidden" name="gameDetails" value="<%= game %>">
+                                <input type="hidden" name="date" value="<%= gameDate %>">
+			                    <input type="hidden" name="team1" value="<%= team1 %>">
+			                    <input type="hidden" name="team2" value="<%= team2 %>">
                                 <button type="submit" class="text-red-500 hover:text-red-700 font-semibold">
                                     Delete
                                 </button>

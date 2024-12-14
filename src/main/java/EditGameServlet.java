@@ -13,10 +13,10 @@ public class EditGameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Date originalDate = Date.valueOf(request.getParameter("originalDate"));
+        String originalDate = request.getParameter("originalDate");
         String originalTeam1 = request.getParameter("originalTeam1");
         String originalTeam2 = request.getParameter("originalTeam2");
-        Date newDate = Date.valueOf(request.getParameter("newDate"));
+        String newDate = request.getParameter("newDate");
         String team1 = request.getParameter("team1");
         String team2 = request.getParameter("team2");
         String winner = request.getParameter("winner");

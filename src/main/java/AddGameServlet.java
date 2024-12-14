@@ -13,7 +13,7 @@ public class AddGameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Date date = Date.valueOf(request.getParameter("date"));
+    	String date = request.getParameter("date");
         String team1 = request.getParameter("team1");
         String team2 = request.getParameter("team2");
         String winner = request.getParameter("winner");

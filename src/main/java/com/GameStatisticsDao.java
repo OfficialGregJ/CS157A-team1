@@ -5,7 +5,7 @@ import java.sql.*;
 public class GameStatisticsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "password123";
+    private String dbpassword = "admin";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
@@ -26,7 +26,7 @@ public class GameStatisticsDao {
         return con;
     }
 
-    public void updateGameStatistics(Date date, String team1, String team2, int team1Pts, int team2Pts, int team1Rebounds, int team2Rebounds, int team1Assists, int team2Assists, int team1Blocks, int team2Blocks, double team1FTPercent, double team2FTPercent, double team13PTPercent, double team23PTPercent, int team1TO, int team2TO) {
+    public void updateGameStatistics(String date, String team1, String team2, int team1Pts, int team2Pts, int team1Rebounds, int team2Rebounds, int team1Assists, int team2Assists, int team1Blocks, int team2Blocks, double team1FTPercent, double team2FTPercent, double team13PTPercent, double team23PTPercent, int team1TO, int team2TO) {
         loadDriver(dbdriver);
         String sql = """
             UPDATE game_statistics
@@ -52,7 +52,7 @@ public class GameStatisticsDao {
             ps.setDouble(12, team23PTPercent);
             ps.setInt(13, team1TO);
             ps.setInt(14, team2TO);
-            ps.setDate(15, date);
+            ps.setString(15, date);
             ps.setString(16, team1);
             ps.setString(17, team2);
             ps.executeUpdate();
@@ -61,13 +61,13 @@ public class GameStatisticsDao {
         }
     }
 
-    public void deleteGameStatistics(Date date, String team1, String team2) {
+    public void deleteGameStatistics(String date, String team1, String team2) {
         loadDriver(dbdriver);
         String sql = "DELETE FROM game_statistics WHERE Date = ? AND Team1 = ? AND Team2 = ?";
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setDate(1, date);
+            ps.setString(1, date);
             ps.setString(2, team1);
             ps.setString(3, team2);
             ps.executeUpdate();

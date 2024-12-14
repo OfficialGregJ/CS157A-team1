@@ -7,7 +7,7 @@ import java.util.List;
 public class GamesDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
     private String dbuname = "root";
-    private String dbpassword = "password123";
+    private String dbpassword = "admin";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {
@@ -52,13 +52,13 @@ public class GamesDao {
         return games;
     }
 
-    public void addGame(Date date, String team1, String team2, String winner, String loser, String location, String videoUrl) {
+    public void addGame(String date, String team1, String team2, String winner, String loser, String location, String videoUrl) {
         loadDriver(dbdriver);
         String sql = "INSERT INTO games (Date, Team1, Team2, Winner, Loser, Location, video_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setDate(1, date);
+            ps.setString(1, date);
             ps.setString(2, team1);
             ps.setString(3, team2);
             ps.setString(4, winner);
@@ -71,20 +71,20 @@ public class GamesDao {
         }
     }
 
-    public void updateGame(Date originalDate, String originalTeam1, String originalTeam2, Date newDate, String team1, String team2, String winner, String loser, String location, String videoUrl) {
+    public void updateGame(String originalDate, String originalTeam1, String originalTeam2, String newDate, String team1, String team2, String winner, String loser, String location, String videoUrl) {
         loadDriver(dbdriver);
         String sql = "UPDATE games SET Date = ?, Team1 = ?, Team2 = ?, Winner = ?, Loser = ?, Location = ?, video_url = ? WHERE Date = ? AND Team1 = ? AND Team2 = ?";
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setDate(1, newDate);
+            ps.setString(1, newDate);
             ps.setString(2, team1);
             ps.setString(3, team2);
             ps.setString(4, winner);
             ps.setString(5, loser);
             ps.setString(6, location);
             ps.setString(7, videoUrl);
-            ps.setDate(8, originalDate);
+            ps.setString(8, originalDate);
             ps.setString(9, originalTeam1);
             ps.setString(10, originalTeam2);
             ps.executeUpdate();
@@ -93,13 +93,13 @@ public class GamesDao {
         }
     }
 
-    public void deleteGame(Date date, String team1, String team2) {
+    public void deleteGame(String date, String team1, String team2) {
         loadDriver(dbdriver);
         String sql = "DELETE FROM games WHERE Date = ? AND Team1 = ? AND Team2 = ?";
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setDate(1, date);
+            ps.setString(1, date);
             ps.setString(2, team1);
             ps.setString(3, team2);
             ps.executeUpdate();

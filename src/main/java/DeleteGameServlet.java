@@ -14,15 +14,15 @@ public class DeleteGameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Date date = Date.valueOf(request.getParameter("date"));
+        String date = request.getParameter("date");
         String team1 = request.getParameter("team1");
         String team2 = request.getParameter("team2");
 
         com.GamesDao gamesDao = new GamesDao();
         GameStatisticsDao statsDao = new GameStatisticsDao();
         try {
+        	gamesDao.deleteGame(date, team1, team2);
             statsDao.deleteGameStatistics(date, team1, team2);
-            gamesDao.deleteGame(date, team1, team2);
             response.sendRedirect("manageGames.jsp?success=Game deleted successfully");
         } catch (Exception e) {
             e.printStackTrace();
