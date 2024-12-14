@@ -9,7 +9,7 @@ import java.util.List;
 public class TournamentsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive"; // Update with your DB name
     private String dbuname = "root"; // Update with your DB username
-    private String dbpassword = "admin"; // Update with your DB password
+    private String dbpassword = "password123"; // Update with your DB password
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
     public void loadDriver(String dbDriver) {

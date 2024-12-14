@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class DashboardDao {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/deep-drive";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "admin";
+    private static final String JDBC_PASSWORD = "password123";
 
     public int getUserCount() {
         String query = "SELECT COUNT(*) FROM users";

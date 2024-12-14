@@ -56,7 +56,7 @@
                 <a href="manageUsers.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Users</a>
                 <a href="manageTeams.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Teams</a>
                 <a href="manageTournaments.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Tournaments</a>
-                <a href="managePlayers.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Players</a>
+                <a href="managePlayer.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Players</a>
                 <a href="manageGames.jsp" class="text-lg hover:underline py-2 lg:py-0">Manage Games</a>
                 <a href="userLogout.jsp" class="text-lg hover:underline py-2 lg:py-0">Logout</a>
             <% 

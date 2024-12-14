@@ -22,6 +22,7 @@ public class UserDao {
         Connection con = null;
         try {
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
+            System.out.print("Connection Established");
         } catch (SQLException e) {
             System.err.println("Failed to establish connection: " + e.getMessage());
             e.printStackTrace();

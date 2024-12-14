@@ -43,11 +43,11 @@
                     <h3 class="font-semibold mb-2">Tournament Management</h3>
                     <p>Add, edit, or delete tournaments.</p>
                 </a>
-                <a href="managePlayers.jsp" class="block bg-purple-100 p-4 rounded-lg shadow-md hover:bg-purple-200">
+                <a href="managePlayer.jsp" class="block bg-purple-100 p-4 rounded-lg shadow-md hover:bg-purple-200">
                     <h3 class="font-semibold mb-2">Player Management</h3>
                     <p>Add, edit, or delete player details.</p>
                 </a>
-                <a href="managePlayers.jsp" class="block bg-red-100 p-4 rounded-lg shadow-md hover:bg-purple-200">
+                <a href="manageGames.jsp" class="block bg-red-100 p-4 rounded-lg shadow-md hover:bg-purple-200">
                     <h3 class="font-semibold mb-2">Game Management</h3>
                     <p>Add, edit, or delete game details.</p>
                 </a>
