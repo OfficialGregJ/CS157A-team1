@@ -14,14 +14,17 @@ public class AddTournamentServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
+    	String name = request.getParameter("name");
+        String date = request.getParameter("date");
+        String team1 = request.getParameter("team1");
+        String team2 = request.getParameter("team2");
+        String winner = request.getParameter("winner");
         String location = request.getParameter("location");
-        Date startDate = Date.valueOf(request.getParameter("startDate"));
-        Date endDate = Date.valueOf(request.getParameter("endDate"));
+        String videoUrl = request.getParameter("video_url");
 
         TournamentDao tournamentDao = new TournamentDao();
         try {
-            tournamentDao.addTournament(name, location, startDate, endDate);
+        	tournamentDao.addTournament(name, date, team1, team2, winner, location, videoUrl);
             response.sendRedirect("manageTournaments.jsp?success=Tournament added successfully");
         } catch (Exception e) {
             e.printStackTrace();

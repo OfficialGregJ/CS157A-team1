@@ -15,14 +15,19 @@ public class EditTournamentServlet extends HttpServlet {
             throws ServletException, IOException {
         String originalName = request.getParameter("originalName");
         String newName = request.getParameter("name");
+        String date = request.getParameter("date");
+        String team1 = request.getParameter("team1");
+        String team2 = request.getParameter("team2");
+        String winner = request.getParameter("winner");
         String location = request.getParameter("location");
-        Date startDate = Date.valueOf(request.getParameter("startDate"));
-        Date endDate = Date.valueOf(request.getParameter("endDate"));
+        String videoUrl = request.getParameter("video_url");
 
         TournamentDao tournamentDao = new TournamentDao();
 
         try {
-            tournamentDao.updateTournament(originalName, newName, location, startDate, endDate);
+        	tournamentDao.updateTournament(
+                    originalName, newName, date, team1, team2, winner, location, videoUrl
+                );
             response.sendRedirect("manageTournaments.jsp?success=Tournament updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

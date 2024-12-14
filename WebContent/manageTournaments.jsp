@@ -22,7 +22,7 @@
             <a href="index.jsp" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Back to Home</a>
         </div>
 
-        <!-- Add Tournament Form -->
+         <!-- Add Tournament Form -->
         <div class="bg-white p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Add a New Tournament</h2>
             <form action="AddTournamentServlet" method="post" class="space-y-4">
@@ -32,25 +32,38 @@
                         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div>
+                    <label for="date" class="block text-gray-700">Date</label>
+                    <input type="date" name="date" id="date" required 
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="team1" class="block text-gray-700">Team 1</label>
+                    <input type="text" name="team1" id="team1" required 
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="team2" class="block text-gray-700">Team 2</label>
+                    <input type="text" name="team2" id="team2" required 
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="winner" class="block text-gray-700">Winner</label>
+                    <input type="text" name="winner" id="winner" 
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
                     <label for="location" class="block text-gray-700">Location</label>
                     <input type="text" name="location" id="location" required 
                         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div>
-                    <label for="startDate" class="block text-gray-700">Start Date</label>
-                    <input type="date" name="startDate" id="startDate" required 
+                    <label for="video_url" class="block text-gray-700">Video URL</label>
+                    <input type="url" name="video_url" id="video_url" 
                         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="endDate" class="block text-gray-700">End Date</label>
-                    <input type="date" name="endDate" id="endDate" required 
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Add Tournament
-                    </button>
-                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Add Tournament
+                </button>
             </form>
         </div>
 
