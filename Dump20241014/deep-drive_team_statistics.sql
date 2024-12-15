@@ -43,7 +43,7 @@ CREATE TABLE `team_statistics` (
 
 LOCK TABLES `team_statistics` WRITE;
 /*!40000 ALTER TABLE `team_statistics` DISABLE KEYS */;
-INSERT INTO `team_statistics` VALUES ('Boston Celtics',120.6,26.9,6.8,6.6,11.9,80.7,38.8,82,64,18),('Brooklyn Nets',110.4,25.6,6.8,5.2,13.1,75.6,36.2,82,32,50),('Chicago Bulls',112.3,25,7.8,4.8,12.2,79.1,35.8,82,39,43),('Dallas Mavericks',117.9,27.9,6.9,5,12.5,75.8,36.9,82,50,32),('Denver Nuggets',114.9,29.5,7.1,5.6,12.6,76.2,37.4,82,57,25),('Golden State Warriors',117.8,29.3,7,4.6,13.7,78,38,82,46,36),('Los Angeles Lakers',118,28.5,7.4,5.5,14,78.2,37.7,82,47,35),('New Orleans Pelicans',115.1,27,8.3,4.6,13,77.1,38.3,82,49,33),('San Antonio Spurs',112.1,29.9,7.1,6.3,15.1,78.2,34.7,82,22,60),('Washington Wizards',113.7,27.9,7.6,5.1,14,76.4,34.8,82,15,67),('New York Knicks',112.8,24.4,7.5,4.1,13.2,78,36.9,82,50,32),('Minnesota Timberwolves',113,26.6,7.9,6.1,14.2,77.7,38.7,82,56,26),('Los Angeles Clippers',115.6,25.6,7.8,5,13.1,82.5,38.1,82,51,31);
+INSERT INTO `team_statistics` VALUES ('Boston Celtics',120.6,26.9,6.8,6.6,11.9,80.7,38.8,82,64,18),('Brooklyn Nets',110.4,25.6,6.8,5.2,13.1,75.6,36.2,82,32,50),('Chicago Bulls',112.3,25,7.8,4.8,12.2,79.1,35.8,82,39,43),('Dallas Mavericks',117.9,27.9,6.9,5,12.5,75.8,36.9,82,50,32),('Denver Nuggets',114.9,29.5,7.1,5.6,12.6,76.2,37.4,82,57,25),('Golden State Warriors',117.8,29.3,7,4.6,13.7,78,38,82,46,36),('Los Angeles Lakers',118,28.5,7.4,5.5,14,78.2,37.7,82,47,35),('New Orleans Pelicans',115.1,27,8.3,4.6,13,77.1,38.3,82,49,33),('San Antonio Spurs',112.1,29.9,7.1,6.3,15.1,78.2,34.7,82,22,60),('Washington Wizards',113.7,27.9,7.6,5.1,14,76.4,34.8,82,15,67),('New York Knicks',112.8,24.4,7.5,4.1,13.2,78,36.9,82,50,32),('Minnesota Timberwolves',113,26.6,7.9,6.1,14.2,77.7,38.7,82,56,26),('Los Angeles Clippers',115.6,25.6,7.8,5,13.1,82.5,38.1,82,51,31),('Milwaukee Bucks',119,26.5,6.8,5,12.9,77.4,37.3,82,49,33),('Miami Heat',110.1,25.8,7.5,3.4,12.7,81.8,37,82,46,36),('Atlanta Hawks',118.3,26.6,7.5,4.5,13.5,79.7,36.4,82,36,46);
 /*!40000 ALTER TABLE `team_statistics` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-02  5:33:50
+-- Dump completed on 2024-12-15  3:46:47

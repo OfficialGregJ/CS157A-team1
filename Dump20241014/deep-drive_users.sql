@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `deep-drive` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `deep-drive`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
@@ -37,7 +35,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('A','Test1','A@example.com'),('B','Test2','B@example.com'),('C','Test3','C@example.com'),('D','Test4','D@example.com'),('E','Test5','E@example.com'),('F','Test6','F@example.com'),('G','Test7','G@example.com'),('H','Test8','H@example.com'),('I','Test9','I@example.com'),('J','Test10','J@example.com');
+INSERT INTO `users` VALUES ('A','Test1','A@example.com'),('B','Test2','B@example.com'),('C','Test3','C@example.com'),('D','Test4','D@example.com'),('E','Test5','E@example.com'),('F','Test6','F@example.com'),('G','Test7','G@example.com'),('H','Test8','H@example.com'),('I','Test9','I@example.com'),('J','Test10','J@example.com'),('K','Test11','K@example.com'),('L','Test12','L@example.com'),('M','Test13','M@example.com'),('N','Test14','N@example.com'),('O','Test15','O@example.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-01 22:39:09
+-- Dump completed on 2024-12-15  3:46:45

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: deep-drive
 -- ------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES ('Boston Celtics','Boston','TD Garden'),('Brooklyn Nets','New York City','Barclays Center'),('Dallas Mavericks','Dallas','American Airlines Center'),('Denver Nuggets','Denver','Ball Arena'),('Golden State Warriors','San Francisco','Chase Center'),('Los Angeles Clippers','Los Angeles','Intuit Dome'),('Los Angeles Lakers','Los Angeles','SoFi Center'),('Minnesota Timberwolves','Minneapolis','Target Center'),('New York Knicks','New York City','Madison Square Garden'),('San Antonio Spurs','San Antonio','Frost Bank Center');
+INSERT INTO `team` VALUES ('Boston Celtics','Boston','TD Garden'),('Brooklyn Nets','New York City','Barclays Center'),('Dallas Mavericks','Dallas','American Airlines Center'),('Denver Nuggets','Denver','Ball Arena'),('Golden State Warriors','San Francisco','Chase Center'),('Los Angeles Clippers','Los Angeles','Intuit Dome'),('Los Angeles Lakers','Los Angeles','SoFi Center'),('Minnesota Timberwolves','Minneapolis','Target Center'),('New York Knicks','New York City','Madison Square Garden'),('San Antonio Spurs','San Antonio','Frost Bank Center'),('Milwaukee Bucks','Milwaukee','Fiserv Forum'),('Miami Heat','Miami','Kaseya Center'),('Atlanta Hawks','Atlanta','State Farm Arena'),('New Orleans Pelicans','New Orleans','Smoothie King Center'),('Chicago Bulls','Chicago','United Center'),('Washington Wizards','Washington D.C.','Capital One Arena');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 11:02:52
+-- Dump completed on 2024-12-15  3:46:47
