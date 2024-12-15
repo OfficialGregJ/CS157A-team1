@@ -113,21 +113,21 @@
                 <!-- Free Throw Percentages -->
                 <div>
                     <label for="team1FTPercent" class="block text-gray-700 font-medium">Team 1 FT%</label>
-                    <input type="number" step="0.1" name="team1FTPercent" id="team1FTPercent" value="<%= gameStats.get("Team1FTPercent") %>" class="w-full border rounded px-3 py-2">
+                    <input type="number" step="0.01" name="team1FTPercent" id="team1FTPercent" value="<%= gameStats.get("Team1FTPercent") %>" class="w-full border rounded px-3 py-2">
                 </div>
                 <div>
                     <label for="team2FTPercent" class="block text-gray-700 font-medium">Team 2 FT%</label>
-                    <input type="number" step="0.1" name="team2FTPercent" id="team2FTPercent" value="<%= gameStats.get("Team2FTPercent") %>" class="w-full border rounded px-3 py-2">
+                    <input type="number" step="0.01" name="team2FTPercent" id="team2FTPercent" value="<%= gameStats.get("Team2FTPercent") %>" class="w-full border rounded px-3 py-2">
                 </div>
 
                 <!-- Three-Point Percentages -->
                 <div>
                     <label for="team13PTPercent" class="block text-gray-700 font-medium">Team 1 3PT%</label>
-                    <input type="number" step="0.1" name="team13PTPercent" id="team13PTPercent" value="<%= gameStats.get("Team13PTPercent") %>" class="w-full border rounded px-3 py-2">
+                    <input type="number" step="0.01" name="team13PTPercent" id="team13PTPercent" value="<%= gameStats.get("Team13PTPercent") %>" class="w-full border rounded px-3 py-2">
                 </div>
                 <div>
                     <label for="team23PTPercent" class="block text-gray-700 font-medium">Team 2 3PT%</label>
-                    <input type="number" step="0.1" name="team23PTPercent" id="team23PTPercent" value="<%= gameStats.get("Team23PTPercent") %>" class="w-full border rounded px-3 py-2">
+                    <input type="number" step="0.01" name="team23PTPercent" id="team23PTPercent" value="<%= gameStats.get("Team23PTPercent") %>" class="w-full border rounded px-3 py-2">
                 </div>
 
                 <!-- Turnovers -->
