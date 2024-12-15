@@ -99,13 +99,13 @@
                 </div>
                 <div>
                     <label for="ft" class="block text-sm font-medium text-gray-700">Free Throw Percentage (FT%)</label>
-                    <input type="number" step="0.1" name="ft" id="ft" 
+                    <input type="number" step="0.01" name="ft" id="ft" 
                         value="<%= stats != null ? stats.getFTPercentage() : "0" %>" 
                         class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-blue-500 focus:border-blue-500" required>
                 </div>
                 <div>
                     <label for="threePt" class="block text-sm font-medium text-gray-700">Three-Point Percentage (3PT%)</label>
-                    <input type="number" step="0.1" name="threePt" id="threePt" 
+                    <input type="number" step="0.01" name="threePt" id="threePt" 
                         value="<%= stats != null ? stats.getThreePTPercentage() : "0" %>" 
                         class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-blue-500 focus:border-blue-500" required>
                 </div>
