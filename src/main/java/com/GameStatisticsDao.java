@@ -1,6 +1,8 @@
 package com;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameStatisticsDao {
     private String dburl = "jdbc:mysql://localhost:3306/deep-drive";
@@ -31,7 +33,7 @@ public class GameStatisticsDao {
         String sql = """
             UPDATE game_statistics
             SET Team1Pts = ?, Team2Pts = ?, Team1Rebounds = ?, Team2Rebounds = ?, Team1Assists = ?, Team2Assists = ?, 
-                Team1Blocks = ?, Team2Blocks = ?, Team1FT% = ?, Team2FT% = ?, Team13PT% = ?, Team23PT% = ?, 
+                Team1Blocks = ?, Team2Blocks = ?, `Team1FT%` = ?, `Team2FT%` = ?, `Team13PT%` = ?, `Team23PT%` = ?, 
                 Team1TO = ?, Team2TO = ?
             WHERE Date = ? AND Team1 = ? AND Team2 = ?
         """;
@@ -75,4 +77,40 @@ public class GameStatisticsDao {
             e.printStackTrace();
         }
     }
+    
+    public Map<String, Object> getGameStatistics(String date, String team1, String team2) {
+        loadDriver(dbdriver);
+        Map<String, Object> stats = new HashMap<>();
+        String sql = "SELECT * FROM game_statistics WHERE Date = ? AND Team1 = ? AND Team2 = ?";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, date);
+            ps.setString(2, team1);
+            ps.setString(3, team2);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    stats.put("Team1Pts", rs.getInt("Team1Pts"));
+                    stats.put("Team2Pts", rs.getInt("Team2Pts"));
+                    stats.put("Team1Rebounds", rs.getInt("Team1Rebounds"));
+                    stats.put("Team2Rebounds", rs.getInt("Team2Rebounds"));
+                    stats.put("Team1Assists", rs.getInt("Team1Assists"));
+                    stats.put("Team2Assists", rs.getInt("Team2Assists"));
+                    stats.put("Team1Blocks", rs.getInt("Team1Blocks"));
+                    stats.put("Team2Blocks", rs.getInt("Team2Blocks"));
+                    stats.put("Team1FTPercent", rs.getDouble("Team1FT%"));
+                    stats.put("Team2FTPercent", rs.getDouble("Team2FT%"));
+                    stats.put("Team13PTPercent", rs.getDouble("Team13PT%"));
+                    stats.put("Team23PTPercent", rs.getDouble("Team23PT%"));
+                    stats.put("Team1TO", rs.getInt("Team1TO"));
+                    stats.put("Team2TO", rs.getInt("Team2TO"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return stats;
+    }
+
 }
