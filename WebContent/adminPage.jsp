@@ -19,6 +19,7 @@
     int totalPlayers = dashboardDao.getPlayerCount();
     int totalTournaments = dashboardDao.getTournamentCount();
     int totalTeams = dashboardDao.getTeamCount();
+    int totalGames = dashboardDao.getGameCount();
 %>
 
     <main class="container mx-auto mt-8 px-4">
@@ -77,6 +78,10 @@
 	            <div class="bg-red-100 p-4 rounded-lg">
 	                <h3 class="font-semibold mb-2">Total Teams</h3>
 	                <p class="text-2xl font-bold"><%= totalTeams %></p>
+	            </div>
+	            <div class="bg-purple-100 p-4 rounded-lg">
+	                <h3 class="font-semibold mb-2">Total Games</h3>
+	                <p class="text-2xl font-bold"><%= totalGames %></p>
 	            </div>
 	        </div>
 	    </section>
