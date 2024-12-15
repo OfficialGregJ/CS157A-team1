@@ -19,7 +19,7 @@
         <!-- Page Header -->
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Manage Players</h1>
-            <a href="index.jsp" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Back to Home</a>
+            <a href="adminPage.jsp" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Back to Dashboard</a>
         </div>
 
         <!-- Add Player Form -->
