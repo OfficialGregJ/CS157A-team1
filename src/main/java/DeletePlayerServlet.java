@@ -15,9 +15,8 @@ public class DeletePlayerServlet extends HttpServlet {
         String name = request.getParameter("name");
 
         PlayerDao playerDao = new PlayerDao();
-        PlayerStatsDao statsDao = new PlayerStatsDao();
         try {
-            statsDao.deletePlayerStats(name);
+        	
             playerDao.deletePlayer(name);
             response.sendRedirect("managePlayer.jsp?success=Player deleted successfully");
         } catch (Exception e) {
