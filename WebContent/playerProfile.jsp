@@ -41,7 +41,7 @@
                     </div>
                     <div class="space-y-2">
                         <p class="text-gray-600">Weight</p>
-                        <p class="text-xl font-semibold"><%= player.getWeight() %></p>
+                        <p class="text-xl font-semibold"><%= player.getWeight() %> lbs</p>
                     </div>
                     <div class="space-y-2">
                         <p class="text-gray-600">College</p>
