@@ -35,7 +35,7 @@ CREATE TABLE `favorites` (
 
 LOCK TABLES `favorites` WRITE;
 /*!40000 ALTER TABLE `favorites` DISABLE KEYS */;
-INSERT INTO `favorites` VALUES ('B','Los Angeles Lakers','Lebron James'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','','Luka Doncic'),('G','','Ben Simmons'),('H','','Jalen Brunson'),('I','','Anthony Edwards'),('J','','Paul George'),('A','Golden State Warriors, Dallas Mavericks','Stephen Curry, Kyrie Irving');
+INSERT INTO `favorites` VALUES ('B','Denver Nuggets',' Nikola Jokic'),('C','San Antonio Spurs','Victor Wembanyama'),('D','Boston Celtics','Jayson Tatum'),('E','Denver Nuggets','Nikola Jokic'),('F','','Luka Doncic'),('G','','Ben Simmons'),('H','','Jalen Brunson'),('I','','Anthony Edwards'),('J','','Paul George'),('A','Golden State Warriors, Dallas Mavericks','Kyrie Irving, Stephen Curry'),('K','Milwaukee Bucks','Giannis Antetokounmpo'),('L','Los Angeles Lakers','LeBron James'),('M','Phoenix Suns','Devin Booker'),('N','Miami Heat','Jimmy Butler'),('O','Philadelphia 76ers','Joel Embiid');
 /*!40000 ALTER TABLE `favorites` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-02  5:09:51
+-- Dump completed on 2024-12-16  0:12:35
