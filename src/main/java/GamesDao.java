@@ -49,11 +49,11 @@ public class GamesDao {
                      "FROM games g " +
                      "JOIN game_statistics gs " +
                      "ON g.Date = gs.Date AND g.Team1 = gs.Team1 AND g.Team2 = gs.Team2 " +
-                     "WHERE g.Date = ?";
+                     "WHERE g.Date = ?"; //SQL statement for querying game by the given date
         try (Connection con = DriverManager.getConnection(dburl, dbuname, dbpassword);
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, date);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(); //Executes SQL statement
             while (rs.next()) {
                 Object[] game = new Object[]{
                     rs.getString("Date"), rs.getString("Team1"), rs.getString("Team2"),
@@ -65,8 +65,8 @@ public class GamesDao {
                     rs.getDouble("Team1FT%"), rs.getDouble("Team2FT%"),
                     rs.getDouble("Team13PT%"), rs.getDouble("Team23PT%"),
                     rs.getInt("Team1TO"), rs.getInt("Team2TO")
-                };
-                games.add(game);
+                }; 
+                games.add(game); //Adds game found by date query to list
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class GamesDao {
         List<Map<String, Object>> playerStats = new ArrayList<>();
         String sql = "SELECT PlayerName, GameDate, PTS, RBS, ATS, BLKS, `FT%`, `3PT%`, TOV, Team " +
                 "FROM player_game_stats " +
-                "WHERE GameDate = ? AND Team = ?";
+                "WHERE GameDate = ? AND Team = ?"; //SQL statement for querying player and their stats by the team they play for and the date
 
 
         try {
@@ -102,7 +102,7 @@ public class GamesDao {
                 stats.put("3PT%", rs.getDouble("3PT%"));
                 stats.put("TOV", rs.getInt("TOV"));
                 stats.put("Team", rs.getString("Team"));
-                playerStats.add(stats);
+                playerStats.add(stats); //Adds that player to the list to return back
             }
         } catch (SQLException e) {
             e.printStackTrace();

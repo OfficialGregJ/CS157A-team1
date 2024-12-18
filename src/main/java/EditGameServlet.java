@@ -26,7 +26,7 @@ public class EditGameServlet extends HttpServlet {
 
         com.GamesDao gamesDao = new GamesDao();
         try {
-            gamesDao.updateGame(originalDate, originalTeam1, originalTeam2, newDate, team1, team2, winner, loser, location, videoUrl);
+            gamesDao.updateGame(originalDate, originalTeam1, originalTeam2, newDate, team1, team2, winner, loser, location, videoUrl); //Updates the game with the new parameters/statistics for it
             response.sendRedirect("manageGames.jsp?success=Game updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

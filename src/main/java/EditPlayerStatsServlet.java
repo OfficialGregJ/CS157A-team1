@@ -24,7 +24,7 @@ public class EditPlayerStatsServlet extends HttpServlet {
 
         PlayerStatsDao statsDao = new PlayerStatsDao();
         try {
-            statsDao.updatePlayerStats(playerName, ppg, apg, bpg, spg, rpg, ftPercentage, threePtPercentage, topg);
+            statsDao.updatePlayerStats(playerName, ppg, apg, bpg, spg, rpg, ftPercentage, threePtPercentage, topg); //Updates the player's stats from the admin's new parameters
             response.sendRedirect("managePlayer.jsp?success=Stats updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

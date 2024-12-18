@@ -23,7 +23,7 @@ public class EditTeamServlet extends HttpServlet {
         try {
             // Update team and stats
             teamDao.updateTeamAndStats(originalName, newName, city, stadium);
-            response.sendRedirect("manageTeams.jsp?success=Team updated successfully");
+            response.sendRedirect("manageTeams.jsp?success=Team updated successfully"); 
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("editTeam.jsp?team=" + originalName + "&error=Failed to update team");

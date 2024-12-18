@@ -21,8 +21,8 @@ public class DeleteGameServlet extends HttpServlet {
         com.GamesDao gamesDao = new GamesDao();
         GameStatisticsDao statsDao = new GameStatisticsDao();
         try {
-        	gamesDao.deleteGame(date, team1, team2);
-            statsDao.deleteGameStatistics(date, team1, team2);
+        	gamesDao.deleteGame(date, team1, team2); //Deletes desired game from the 'games' table
+            statsDao.deleteGameStatistics(date, team1, team2); //Also deletes that game's statistics
             response.sendRedirect("manageGames.jsp?success=Game deleted successfully");
         } catch (Exception e) {
             e.printStackTrace();

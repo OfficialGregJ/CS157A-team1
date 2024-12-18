@@ -26,7 +26,7 @@ public class EditPlayerServlet extends HttpServlet {
 
         PlayerDao playerDao = new PlayerDao();
         try {
-            playerDao.updatePlayer(originalName, newName, team, position, age, height, weight, college, yearInNBA, imageUrl);
+            playerDao.updatePlayer(originalName, newName, team, position, age, height, weight, college, yearInNBA, imageUrl); //Updates the player's information from the admin's new parameters
             response.sendRedirect("managePlayer.jsp?success=Player updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

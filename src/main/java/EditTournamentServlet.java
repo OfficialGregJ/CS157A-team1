@@ -27,7 +27,7 @@ public class EditTournamentServlet extends HttpServlet {
         try {
         	tournamentDao.updateTournament(
                     originalName, newName, date, team1, team2, winner, location, videoUrl
-                );
+                ); //Function for updating tournaments
             response.sendRedirect("manageTournaments.jsp?success=Tournament updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

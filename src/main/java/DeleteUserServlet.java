@@ -14,7 +14,7 @@ public class DeleteUserServlet extends HttpServlet {
         String username = request.getParameter("username");
 
         UserDao userDao = new UserDao();
-        String result = userDao.deleteUser(username);
+        String result = userDao.deleteUser(username); //Deletes the user from the 'users' table
 
         response.sendRedirect("manageUsers.jsp");
     }

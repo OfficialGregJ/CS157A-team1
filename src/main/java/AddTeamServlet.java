@@ -14,6 +14,7 @@ public class AddTeamServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	// Necessary params for teams
         String teamName = request.getParameter("name");
         String city = request.getParameter("city");
         String stadium = request.getParameter("stadium");

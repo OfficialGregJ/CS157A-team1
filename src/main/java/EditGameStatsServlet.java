@@ -33,7 +33,7 @@ public class EditGameStatsServlet extends HttpServlet {
 
         GameStatisticsDao statsDao = new GameStatisticsDao();
         try {
-            statsDao.updateGameStatistics(date, team1, team2, team1Pts, team2Pts, team1Rebounds, team2Rebounds, team1Assists, team2Assists, team1Blocks, team2Blocks, team1FTPercent, team2FTPercent, team13PTPercent, team23PTPercent, team1TO, team2TO);
+            statsDao.updateGameStatistics(date, team1, team2, team1Pts, team2Pts, team1Rebounds, team2Rebounds, team1Assists, team2Assists, team1Blocks, team2Blocks, team1FTPercent, team2FTPercent, team13PTPercent, team23PTPercent, team1TO, team2TO); //Runs same function as update for games, except now it is with game stats
             response.sendRedirect("manageGames.jsp?success=Stats updated successfully");
         } catch (Exception e) {
             e.printStackTrace();

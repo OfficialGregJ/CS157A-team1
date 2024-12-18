@@ -52,7 +52,7 @@ public class EditTeamStatsServlet extends HttpServlet {
             stats.setLosses(losses);
 
             TeamStatsDao statsDao = new TeamStatsDao();
-            statsDao.updateTeamStats(teamName, stats);
+            statsDao.updateTeamStats(teamName, stats); //Runs update on the team's statistics
 
             response.sendRedirect("manageTeams.jsp?success=Stats updated successfully.");
         } catch (NumberFormatException e) {

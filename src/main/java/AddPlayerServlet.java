@@ -24,6 +24,7 @@ public class AddPlayerServlet extends HttpServlet {
 
         PlayerDao playerDao = new PlayerDao();
         try {
+        	//Adds player
             playerDao.addPlayer(name, team, position, age, height, weight, college, yearInNBA, imageUrl);
             response.sendRedirect("managePlayer.jsp?success=Player added successfully");
         } catch (Exception e) {

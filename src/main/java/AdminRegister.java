@@ -12,25 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AdminRegister")
 public class AdminRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public AdminRegister() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //Used to check if AdminRegister is running by checking response from GET request
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
@@ -40,7 +33,7 @@ public class AdminRegister extends HttpServlet {
 		
 		
 		AdminRegisterDao aDao = new AdminRegisterDao();
-		String result = aDao.insert(admin);
+		String result = aDao.insert(admin); //runs adminDao to insert the new Admin object, checks if it already exists or does not exist
 		
 		
 		if (result.equals("Data entered successfully")) {
