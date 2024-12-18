@@ -34,6 +34,7 @@ public class TeamStatsDao {
         return con;
     }
     
+    // Retrieves all names of teams stored within the db
     public List<String> getAllTeams() {
         loadDriver(dbdriver);
         List<String> teamNames = new ArrayList<>();
@@ -50,6 +51,7 @@ public class TeamStatsDao {
         return teamNames;
     }
 
+    // Retrieves team statistics of specified team from db
     public TeamStats getTeamStats(String team) {
         loadDriver(dbdriver);
         Connection con = null;
@@ -91,6 +93,7 @@ public class TeamStatsDao {
         return stats;
     }
     
+    // Add team statistics for admins
     public void addTeamStats(String team, TeamStats stats) {
         loadDriver(dbdriver);
         String sql = "INSERT INTO `deep-drive`.team_statistics (Team, PPG, APG, SPG, BPG, TOPG, `FT%`, `3PT%`, GamesPlayed, Wins, Losses) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -115,7 +118,7 @@ public class TeamStatsDao {
         }
     }
    
-
+    // Update team statistics for admins
     public void updateTeamStats(String team, TeamStats stats) {
         loadDriver(dbdriver);
         String sql = "UPDATE `deep-drive`.team_statistics " +
@@ -141,6 +144,7 @@ public class TeamStatsDao {
         }
     }
     
+    // Delete team statistics for admins
     public void deleteTeamStats(String team) {
         loadDriver(dbdriver);
         String sql = "DELETE FROM `deep-drive`.team_statistics WHERE Team = ?";

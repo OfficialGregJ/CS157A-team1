@@ -8,6 +8,7 @@ public class PlayerProfileDao {
     private String dbpassword = "password123";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
+    // Function gets basic information about player from the db
     public Player getPlayerByName(String name) {
         Player player = null;
         try {
@@ -38,6 +39,7 @@ public class PlayerProfileDao {
         return player;
     }
 
+    // Function gets actual player statistics from db
     public PlayerStats getPlayerStatsByName(String name) {
         PlayerStats stats = null;
         try {

@@ -9,16 +9,21 @@ import com.Player;
 @WebServlet("/playerProfile")
 public class PlayerProfile extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    
+    // Get request
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String playerName = request.getParameter("name");
+		// Setting up request + formatting of name
+		String playerName = request.getParameter("name");
         
         String playerNameUpdated = playerName.replace('+', ' ');
         
+        // Error checking
         if (playerNameUpdated != null && !playerNameUpdated.trim().isEmpty()) {
+        	// Send request to get required information
             PlayerProfileDao dao = new PlayerProfileDao();
             Player player = dao.getPlayerByName(playerNameUpdated);
-
+            
+            // If actually got a proper response, fill out required information
             if (player != null) {
                 request.setAttribute("player", player);
                 
